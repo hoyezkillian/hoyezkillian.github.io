@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#10110f" />
+    <meta name="description" content="Parcours professionnel de Killian Hoyez : stages en support informatique, systèmes, réseaux et découverte de la cybersécurité." />
+    <meta property="og:title" content="Parcours professionnel — Killian Hoyez" />
+    <meta property="og:description" content="Trois expériences de terrain autour du support informatique, des infrastructures et des réseaux." />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="fr_FR" />
+    <link rel="icon" type="image/svg+xml" href="https://imgs.search.brave.com/HBXkOZFEcLMCjWeNFne8ZSruWmKytpFtZ07hPt8DIpE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzU1Lzgy/LzFhLzU1ODIxYTYy/YWY2NDJhYzE4MDdh/ODk4ODQ1OWQ3YzFl/LmpwZw" />
+    <title>Parcours professionnel — Killian Hoyez</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --ink: #10110f;
+        --paper: #f0f0eb;
+        --white: #fafaf6;
+        --muted: #999b94;
+        --muted-dark: #646660;
+        --line: #353632;
+        --accent: #d5ff68;
+        --mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+        --sans: Inter, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        --page: 1180px;
+        font-family: var(--sans);
+        font-synthesis: none;
+        text-rendering: optimizeLegibility;
+        scroll-behavior: smooth;
+        scroll-padding-top: 92px;
+      }
+      *, *::before, *::after { box-sizing: border-box; }
+      body { margin: 0; background: var(--ink); color: var(--white); }
+      a { color: inherit; text-decoration: none; }
+      button { font: inherit; }
+      [hidden] { display: none !important; }
+      .skip-link { position: fixed; z-index: 70; top: 12px; left: 12px; padding: 12px 16px; transform: translateY(-160%); background: var(--accent); color: var(--ink); }
+      .skip-link:focus { transform: translateY(0); }
+      .wrap { width: min(calc(100% - 64px), var(--page)); margin-inline: auto; }
+      .mono, .eyebrow, .section-number, .nav-link, .meta-label, .tag { font-family: var(--mono); letter-spacing: .075em; text-transform: uppercase; }
+      .eyebrow { display: flex; align-items: center; gap: 12px; margin: 0 0 22px; color: var(--muted); font-size: 10px; line-height: 1.5; }
+      .eyebrow::before { width: 22px; height: 1px; background: var(--accent); content: ""; }
+      :focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+
+      .site-header { position: sticky; z-index: 20; top: 0; border-bottom: 1px solid rgb(250 250 246 / 14%); background: rgb(16 17 15 / 86%); backdrop-filter: blur(14px) saturate(112%); box-shadow: inset 0 -1px rgb(255 255 255 / 3%); }
+      .header-inner { display: flex; min-height: 72px; align-items: center; justify-content: space-between; gap: 22px; }
+      .brand { display: inline-flex; min-width: max-content; align-items: center; gap: 12px; font-size: 13px; letter-spacing: -.025em; }
+      .brand-mark { display: grid; width: 34px; height: 34px; place-items: center; border: 1px solid #696b63; color: var(--accent); font: 11px var(--mono); letter-spacing: -.08em; }
+      .brand strong { font-weight: 720; }
+      .page-nav { display: flex; align-items: center; gap: clamp(16px, 2.4vw, 32px); }
+      .nav-link { padding-block: 8px; color: #b7b8b1; font-size: 9px; transition: color .18s ease; }
+      .nav-link:hover { color: var(--white); }
+      .button { display: inline-flex; min-height: 44px; align-items: center; justify-content: center; gap: 15px; padding: 0 15px; border: 1px solid #5a5b55; background: rgb(255 255 255 / 3%); box-shadow: inset 0 1px rgb(255 255 255 / 6%); font-size: 11px; font-weight: 620; transition: transform .18s ease, color .18s ease, background .18s ease, border-color .18s ease; }
+      .button:hover { transform: translateY(-2px); border-color: var(--accent); background: rgb(255 255 255 / 7%); }
+      .button-primary { border-color: var(--accent); background: var(--accent); color: var(--ink); box-shadow: none; }
+      .button-primary:hover { background: #e4ff9c; color: var(--ink); }
+
+      .tile-field { position: relative; isolation: isolate; --grid-size: 48px; --grid-line: rgb(255 255 255 / 3%); --grid-glint: rgb(255 255 255 / 10%); --grid-opacity: .7; --grid-mask: linear-gradient(to bottom, #000, transparent 95%); }
+      .tile-field > .wrap { position: relative; z-index: 1; }
+      .tile-field::before, .tile-field::after { position: absolute; z-index: 0; inset: 0; content: ""; pointer-events: none; }
+      .tile-field::before { background-image: linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px); background-size: var(--grid-size) var(--grid-size); opacity: var(--grid-opacity); -webkit-mask-image: var(--grid-mask); mask-image: var(--grid-mask); animation: grid-breathe 16s ease-in-out infinite alternate; }
+      .tile-field::after { background-image: linear-gradient(var(--grid-glint) 1px, transparent 1px), linear-gradient(90deg, var(--grid-glint) 1px, transparent 1px); background-size: var(--grid-size) var(--grid-size); opacity: 0; -webkit-mask-image: radial-gradient(circle 145px at var(--grid-x, -500px) var(--grid-y, -500px), #000 0, transparent 100%); mask-image: radial-gradient(circle 145px at var(--grid-x, -500px) var(--grid-y, -500px), #000 0, transparent 100%); transition: opacity .24s ease; }
+      .tile-field.is-highlighted::after { opacity: 1; }
+      @keyframes grid-breathe { from { opacity: var(--grid-opacity, .7); } to { opacity: calc(var(--grid-opacity, .7) - .12); } }
+
+      .page-hero { min-height: min(680px, calc(100svh - 72px)); display: flex; align-items: center; padding-block: clamp(72px, 10vh, 120px); border-bottom: 1px solid var(--line); --grid-size: 46px; --grid-line: rgb(255 255 255 / 3%); --grid-opacity: .9; --grid-mask: linear-gradient(to bottom, #000 0%, transparent 94%); }
+      .hero-layout { display: grid; grid-template-columns: 1.08fr .92fr; align-items: center; gap: clamp(40px, 7vw, 100px); }
+      .hero-copy { position: relative; z-index: 1; }
+      .page-hero h1 { max-width: 780px; margin: 0; font-size: clamp(57px, 8.8vw, 112px); font-weight: 680; letter-spacing: -.092em; line-height: .88; }
+      .page-hero h1 span { display: block; margin-top: .1em; color: var(--accent); }
+      .hero-lede { max-width: 620px; margin: 28px 0 0; color: #b5b6af; font-size: clamp(14px, 1.45vw, 16px); line-height: 1.85; }
+      .hero-actions { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 27px; }
+      .hero-panel { position: relative; z-index: 1; padding: clamp(22px, 3vw, 34px); border: 1px solid rgb(250 250 246 / 19%); background: rgb(250 250 246 / 5%); backdrop-filter: blur(12px) saturate(108%); box-shadow: inset 0 1px rgb(255 255 255 / 7%), 0 24px 66px rgb(0 0 0 / 18%); }
+      .panel-label, .panel-foot { color: #92948b; font: 9px var(--mono); letter-spacing: .1em; text-transform: uppercase; }
+      .experience-count { display: flex; align-items: baseline; gap: 14px; margin-block: 32px 24px; }
+      .experience-count strong { color: var(--accent); font: 54px var(--mono); letter-spacing: -.1em; }
+      .experience-count span { max-width: 100px; color: #c5c6be; font-size: 12px; line-height: 1.5; }
+      .mini-timeline { display: grid; gap: 0; margin-bottom: 22px; }
+      .mini-timeline span { display: grid; grid-template-columns: 14px 1fr; align-items: center; gap: 11px; min-height: 34px; color: #a5a79e; font: 9px var(--mono); letter-spacing: .045em; text-transform: uppercase; }
+      .mini-timeline span::before { width: 6px; height: 6px; border: 1px solid var(--accent); content: ""; }
+      .panel-foot { display: block; padding-top: 14px; border-top: 1px solid rgb(250 250 246 / 16%); font-size: 8px; line-height: 1.7; }
+
+      .experience-section { padding-block: 100px 40px; --grid-size: 60px; --grid-line: rgb(255 255 255 / 2.2%); --grid-glint: rgb(255 255 255 / 8%); --grid-opacity: .6; --grid-mask: radial-gradient(ellipse at 85% 42%, #000 0%, transparent 86%); }
+      .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 40px; margin-bottom: 35px; }
+      .section-number { display: block; margin-bottom: 15px; color: #888a81; font-size: 9px; }
+      .section-heading .eyebrow { margin-bottom: 16px; }
+      .section-heading h2 { margin: 0; font-size: clamp(39px, 5vw, 64px); font-weight: 610; letter-spacing: -.08em; line-height: .98; }
+      .section-heading h2 span { color: var(--accent); }
+      .section-note { max-width: 360px; margin: 0 0 3px; color: #a7a89f; font-size: 12px; line-height: 1.8; }
+      .experience-stack { position: relative; padding: 25px 0 30vh 43px; }
+      .experience-stack::before { position: absolute; top: 44px; bottom: 35vh; left: 13px; width: 1px; background: linear-gradient(to bottom, rgb(213 255 104 / 68%), rgb(250 250 246 / 9%)); content: ""; }
+      .step-trigger { height: 1px; margin: 0; }
+      .experience-slide { position: sticky; z-index: var(--slide-order, 1); top: var(--pin-top, 104px); margin-bottom: clamp(150px, 29vh, 270px); }
+      .experience-slide:last-child { margin-bottom: 0; }
+      .experience-slide::before { position: absolute; z-index: 2; top: 43px; left: -36px; display: grid; width: 14px; height: 14px; place-items: center; border: 1px solid var(--accent); background: var(--ink); box-shadow: 0 0 0 5px rgb(16 17 15 / 84%); content: ""; }
+      .experience-card { display: grid; min-height: clamp(540px, 68vh, 760px); grid-template-columns: minmax(245px, .36fr) minmax(0, .64fr); border: 1px solid rgb(250 250 246 / 19%); background: rgb(250 250 246 / 5.5%); backdrop-filter: blur(14px) saturate(108%); box-shadow: inset 0 1px rgb(255 255 255 / 7%), 0 28px 80px rgb(0 0 0 / 23%); transform-origin: center top; transition: opacity .55s ease, transform .72s cubic-bezier(.2,.75,.2,1), filter .62s ease, box-shadow .5s ease, border-color .35s ease; }
+      .experience-slide.is-current .experience-card { border-color: rgb(213 255 104 / 42%); box-shadow: inset 0 1px rgb(255 255 255 / 9%), 0 34px 90px rgb(0 0 0 / 28%); }
+      .experience-identity { display: flex; flex-direction: column; align-items: flex-start; padding: clamp(21px, 3vw, 35px); border-right: 1px solid rgb(250 250 246 / 14%); background: rgb(16 17 15 / 19%); }
+      .step-label { display: flex; width: 100%; align-items: center; justify-content: space-between; gap: 12px; color: #8f9188; font: 9px var(--mono); letter-spacing: .1em; text-transform: uppercase; }
+      .step-label strong { color: var(--accent); font-weight: 400; }
+      .company-logo { display: grid; width: 100%; min-height: 112px; place-items: center; margin-block: clamp(23px, 4vh, 38px); border: 1px solid rgb(250 250 246 / 15%); background: rgb(250 250 246 / 3%); box-shadow: inset 0 1px rgb(255 255 255 / 5%); }
+      .company-logo img { display: block; max-width: min(84%, 220px); max-height: 64px; object-fit: contain; }
+      .logo-placeholder { display: grid; justify-items: center; gap: 7px; color: #9b9d94; text-align: center; }
+      .logo-placeholder strong { color: #d8d9d1; font: 10px var(--mono); letter-spacing: .09em; }
+      .logo-placeholder small { color: #777970; font: 8px var(--mono); }
+      .company-type { margin: 0 0 11px; color: #85877e; font: 8px var(--mono); letter-spacing: .09em; text-transform: uppercase; }
+      .experience-identity h2 { max-width: 420px; margin: 0; font-size: clamp(24px, 2.55vw, 36px); font-weight: 590; letter-spacing: -.065em; line-height: 1.05; overflow-wrap: anywhere; }
+      .company-location { display: flex; align-items: center; gap: 8px; margin: 13px 0 0; color: #b9bab2; font-size: 12px; }
+      .company-location::before { width: 6px; height: 6px; border: 1px solid var(--accent); content: ""; }
+      .period-list { display: grid; gap: 8px; width: 100%; margin-top: auto; padding-top: 28px; }
+      .period-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; padding: 10px 0; border-top: 1px solid rgb(250 250 246 / 15%); color: #d0d1c9; font: 10px var(--mono); }
+      .period-row span { color: var(--accent); }
+
+      .experience-details { display: flex; flex-direction: column; padding: clamp(23px, 3.3vw, 40px); }
+      .experience-summary { max-width: 710px; margin: 0 0 24px; color: #e0e1da; font-size: clamp(15px, 1.7vw, 19px); line-height: 1.65; letter-spacing: -.02em; }
+      .detail-rule { height: 1px; margin-bottom: 21px; background: rgb(250 250 246 / 17%); }
+      .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px 27px; }
+      .detail-group h3, .technical-note h3 { margin: 0 0 12px; color: #96988f; font: 9px var(--mono); letter-spacing: .1em; text-transform: uppercase; }
+      .mission-list { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+      .mission-list li { position: relative; padding-left: 14px; color: #bfc0b8; font-size: 11px; line-height: 1.65; }
+      .mission-list li::before { position: absolute; top: .72em; left: 0; width: 5px; height: 1px; background: var(--accent); content: ""; }
+      .knowledge-list { display: flex; flex-wrap: wrap; align-content: start; gap: 7px; }
+      .knowledge-tag { display: inline-flex; min-height: 26px; align-items: center; padding: 5px 8px; border: 1px solid rgb(250 250 246 / 18%); background: rgb(250 250 246 / 3%); color: #c5c6be; font: 8px var(--mono); line-height: 1.4; letter-spacing: .035em; }
+      .technical-note { margin-top: 22px; padding: 14px 16px; border-left: 1px solid var(--accent); background: rgb(250 250 246 / 3%); }
+      .technical-note h3 { margin-bottom: 6px; color: var(--accent); }
+      .technical-note p { margin: 0; color: #aeb0a7; font-size: 10px; line-height: 1.7; }
+      .experience-card-foot { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: auto; padding-top: 19px; color: #7c7e75; font: 8px var(--mono); letter-spacing: .09em; text-transform: uppercase; }
+      .progress-track { width: min(160px, 36%); height: 1px; background: rgb(250 250 246 / 17%); }
+      .progress-track span { display: block; width: var(--progress, 33%); height: 1px; background: var(--accent); }
+
+      .closing-section { padding-block: 76px 110px; border-top: 1px solid var(--line); --grid-size: 70px; --grid-opacity: .42; --grid-mask: radial-gradient(ellipse at 12% 100%, #000, transparent 86%); }
+      .closing-layout { display: grid; grid-template-columns: .7fr 1.3fr; align-items: end; gap: 60px; }
+      .closing-layout h2 { max-width: 650px; margin: 0; font-size: clamp(36px, 5.6vw, 68px); font-weight: 600; letter-spacing: -.08em; line-height: .98; }
+      .closing-layout h2 span { color: var(--accent); }
+      .closing-aside { display: grid; justify-items: start; gap: 20px; color: #a6a89f; font-size: 12px; line-height: 1.8; }
+      .site-footer { border-top: 1px solid var(--line); background: #10110f; }
+      .footer-inner { display: flex; min-height: 72px; align-items: center; justify-content: space-between; gap: 20px; color: #888a81; font-size: 10px; }
+      .footer-top { color: var(--white); font: 9px var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+
+      .custom-cursor { position: fixed; z-index: 80; top: 0; left: 0; display: grid; width: 22px; height: 22px; place-items: center; border: 1px solid var(--accent); border-radius: 50%; color: var(--ink); font: 8px var(--mono); opacity: 0; pointer-events: none; transform: translate3d(var(--cursor-x, -100px), var(--cursor-y, -100px), 0) translate(-50%, -50%); box-shadow: 0 0 0 1px rgb(10 11 9 / 88%), 0 0 0 2px rgb(255 255 255 / 74%); transition: width .18s ease, height .18s ease, background .18s ease, opacity .18s ease, box-shadow .18s ease; }
+      .custom-cursor.is-visible { opacity: 1; }
+      .custom-cursor.is-active { width: 42px; height: 42px; background: var(--accent); }
+      .custom-cursor.is-view { width: 42px; height: 42px; background: var(--accent); }
+      .custom-cursor::after { content: attr(data-label); opacity: 0; }
+      .custom-cursor.is-view::after { opacity: 1; }
+      .has-custom-cursor, .has-custom-cursor a, .has-custom-cursor button { cursor: none !important; }
+      .motion-ready .experience-card { opacity: .68; filter: blur(8px); transition: opacity .55s ease, transform .72s cubic-bezier(.2,.75,.2,1), filter .62s ease, box-shadow .45s ease, border-color .35s ease; }
+      .motion-ready .experience-slide:nth-of-type(1) .experience-card { transform: translateY(42px) scale(.975); }
+      .motion-ready .experience-slide:nth-of-type(2) .experience-card { transform: perspective(900px) translateX(38px) rotateY(-2deg) scale(.98); }
+      .motion-ready .experience-slide:nth-of-type(3) .experience-card { transform: perspective(900px) translateX(-38px) rotateY(2deg) scale(.98); }
+      .motion-ready .experience-slide.is-visible .experience-card { opacity: 1; filter: blur(0); transform: none; }
+      .motion-ready .experience-slide.is-past .experience-card { opacity: .45; filter: blur(1.5px); transform: translateY(-18px) scale(.96); }
+      .motion-ready .experience-slide.is-current .experience-card { opacity: 1; filter: blur(0); }
+      @media (min-width: 861px) { .experience-slide { position: sticky; } }
+      @media (min-width: 861px) and (max-height: 760px) {
+        .experience-slide { position: relative; top: auto; margin-bottom: clamp(90px, 16vh, 150px); }
+      }
+      @media (max-width: 1100px) {
+        .hero-layout { gap: 42px; }
+        .experience-card { grid-template-columns: minmax(215px, .38fr) minmax(0, .62fr); }
+        .experience-details { padding: 25px; }
+        .detail-grid { gap: 20px; }
+      }
+      @media (max-width: 860px) {
+        :root { scroll-padding-top: 82px; }
+        .wrap { width: min(calc(100% - 44px), 680px); }
+        .header-inner { min-height: 68px; flex-wrap: wrap; gap: 0 16px; padding-block: 10px; }
+        .page-nav { gap: 13px; }
+        .header-inner > .button { min-height: 38px; padding-inline: 11px; font-size: 10px; }
+        .page-hero { min-height: 0; padding-block: 76px; }
+        .hero-layout { grid-template-columns: 1fr; gap: 36px; }
+        .hero-panel { width: min(100%, 590px); }
+        .experience-section { padding-top: 77px; }
+        .section-heading { align-items: flex-start; flex-direction: column; gap: 17px; }
+        .section-note { max-width: 560px; }
+        .experience-stack { padding-left: 32px; }
+        .experience-stack::before { left: 7px; }
+        .experience-slide { position: relative; top: auto; margin-bottom: 34px; }
+        .experience-slide::before { left: -31px; }
+        .experience-card { min-height: 0; grid-template-columns: 1fr; }
+        .experience-identity { border-right: 0; border-bottom: 1px solid rgb(250 250 246 / 14%); }
+        .company-logo { min-height: 84px; width: min(100%, 260px); margin-block: 20px; }
+        .period-list { margin-top: 22px; padding-top: 10px; }
+        .experience-details { padding: 23px; }
+        .closing-layout { grid-template-columns: 1fr; gap: 26px; }
+        .closing-aside { max-width: 600px; }
+        .footer-inner { min-height: 66px; }
+      }
+      @media (max-width: 560px) {
+        :root { scroll-padding-top: 76px; }
+        .wrap { width: min(calc(100% - 34px), 480px); }
+        .header-inner { gap: 9px 10px; }
+        .brand { font-size: 12px; }
+        .brand-mark { width: 31px; height: 31px; }
+        .page-nav { order: 3; width: 100%; justify-content: space-between; padding: 7px 0 2px; border-top: 1px solid rgb(250 250 246 / 12%); }
+        .nav-link { font-size: 8px; }
+        .header-inner > .button { margin-left: auto; }
+        .page-hero { padding-block: 62px 66px; }
+        .page-hero h1 { font-size: clamp(54px, 14vw, 80px); }
+        .hero-lede { margin-top: 22px; font-size: 13px; }
+        .hero-actions { margin-top: 22px; }
+        .button { min-height: 43px; }
+        .hero-panel { padding: 20px; }
+        .experience-count { margin-block: 23px 17px; }
+        .experience-count strong { font-size: 45px; }
+        .experience-section { padding-block: 64px 20px; }
+        .section-heading h2 { font-size: clamp(37px, 11vw, 53px); }
+        .experience-stack { padding: 8px 0 90px 25px; }
+        .experience-stack::before { left: 4px; bottom: 95px; }
+        .experience-slide { margin-bottom: 22px; }
+        .experience-slide::before { top: 28px; left: -27px; width: 12px; height: 12px; }
+        .experience-identity { padding: 20px; }
+        .experience-identity h2 { font-size: 29px; }
+        .experience-details { padding: 20px; }
+        .experience-summary { font-size: 14px; }
+        .detail-grid { grid-template-columns: 1fr; gap: 20px; }
+        .mission-list li { font-size: 12px; }
+        .technical-note p { font-size: 11px; }
+        .experience-card-foot { flex-wrap: wrap; }
+        .progress-track { width: 100%; order: 3; }
+        .closing-section { padding-block: 52px 75px; }
+        .closing-layout h2 { font-size: clamp(37px, 11vw, 56px); }
+        .footer-inner { align-items: flex-start; flex-direction: column; justify-content: center; gap: 9px; padding-block: 15px; }
+      }
+      @media (max-width: 380px) {
+        .hero-actions { align-items: stretch; flex-direction: column; }
+        .hero-actions .button { justify-content: space-between; }
+        .experience-identity h2 { font-size: 25px; }
+      }
+      @media (max-width: 680px) {
+        .tile-field::after { display: none; }
+        .tile-field::before { animation: none; }
+        .site-header, .hero-panel, .experience-card { backdrop-filter: blur(6px); }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+        .experience-slide { position: static !important; top: auto !important; margin-bottom: 24px !important; }
+        .experience-card, .experience-slide.is-past .experience-card { opacity: 1 !important; filter: none !important; transform: none !important; }
+        .tile-field::before { animation: none !important; }
+        .tile-field::after { display: none !important; }
+        .custom-cursor { display: none !important; }
+      }
+      @media (pointer: coarse), (hover: none) { .custom-cursor { display: none !important; } }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Aller au contenu</a>
+    <div class="custom-cursor" id="custom-cursor" aria-hidden="true"></div>
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="brand" href="../index.html#accueil" aria-label="Killian Hoyez — portfolio principal">
+          <span class="brand-mark" aria-hidden="true">KH</span>
+          <span>Killian <strong>Hoyez</strong></span>
+        </a>
+        <nav class="page-nav" aria-label="Navigation principale">
+          <a class="nav-link" href="#experiences">Expériences / en entreprise</a>
+        </nav>
+        <a class="button" href="../index.html#parcours">Retour au portfolio <span aria-hidden="true">&#8599;</span></a>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="page-hero tile-field" id="accueil" data-tile-field aria-labelledby="page-title">
+        <div class="wrap hero-layout">
+          <div class="hero-copy">
+            <p class="eyebrow">Killian Hoyez <span class="mono">/ Parcours</span></p>
+            <h1 id="page-title">Parcours<span>professionnel.</span></h1>
+            <p class="hero-lede">Mes expériences en entreprise m’ont permis de découvrir concrètement le support informatique, les infrastructures réseau et les enjeux d’un système d’information en situation de crise.</p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="#experiences" data-cursor="VIEW">Explorer les expériences <span aria-hidden="true">&#8595;</span></a>
+              <a class="button" href="../index.html#parcours">Revenir au portfolio <span aria-hidden="true">&#8599;</span></a>
+            </div>
+          </div>
+          <aside class="hero-panel" aria-label="Repères sur les expériences présentées">
+            <span class="panel-label">Repères / terrain</span>
+            <div class="experience-count"><strong id="experience-count">03</strong><span>expériences en entreprise</span></div>
+            <div class="mini-timeline" aria-hidden="true">
+              <span>Immersion & crise</span>
+              <span>Support & maintenance</span>
+              <span>Réseaux & infrastructure</span>
+            </div>
+            <span class="panel-foot">Paris · Le Mans · Mantes-la-Jolie<br />2024 — 2025 / informations communiquées</span>
+          </aside>
+        </div>
+      </section>
+
+      <section class="experience-section tile-field" id="experiences" data-tile-field aria-labelledby="experiences-title">
+        <div class="wrap">
+          <div class="section-heading">
+            <div><span class="section-number">01 / 03 — EXPÉRIENCES</span><p class="eyebrow">Stages & terrain professionnel</p><h2 id="experiences-title">Trois contextes,<br />un fil conducteur<span>.</span></h2></div>
+            <p class="section-note">Des premières immersions en support et en infrastructure, présentées à partir des missions et informations confirmées.</p>
+          </div>
+          <div class="experience-stack" id="experience-stack" aria-label="Expériences professionnelles, de la plus récente à la plus ancienne"></div>
+        </div>
+      </section>
+
+      <section class="closing-section tile-field" data-tile-field aria-labelledby="closing-title">
+        <div class="wrap closing-layout">
+          <div><span class="section-number">SUITE / APPRENTISSAGE</span><p class="eyebrow">Une étape après l’autre</p><h2 id="closing-title">Comprendre le terrain, <span>continuer à apprendre.</span></h2></div>
+          <div class="closing-aside"><p>Ces expériences nourrissent mon parcours d’étudiant en BTS SIO, option SISR. Je continue à développer mes compétences par la formation et des projets concrets.</p><a class="button button-primary" href="../index.html#parcours">Retour au portfolio principal <span aria-hidden="true">&#8599;</span></a></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap footer-inner"><span>© Killian Hoyez — Parcours professionnel</span><a class="footer-top" href="#accueil">Retour en haut ↑</a></div>
+    </footer>
+
+    <script>
+      const experiences = [
+        {
+          company: 'Institut des Hautes Études du Ministère de l’Intérieur',
+          location: 'Paris',
+          logo: null,
+          logoFile: 'ihemi.png',
+          periods: [
+            { start: '10/03/2025', startISO: '2025-03-10', end: '05/04/2025', endISO: '2025-04-05' },
+            { start: '29/09/2025', startISO: '2025-09-29', end: '18/10/2025', endISO: '2025-10-18' }
+          ],
+          description: 'Une immersion dans des exercices de crise liés à des situations d’attaque cyber, complétée par une participation au support et à la gestion de systèmes informatiques, notamment autour de baies de brassage.',
+          missions: [
+            'Découvrir les environnements informatiques d’une organisation professionnelle.',
+            'Prendre part au support et à la gestion de systèmes informatiques.',
+            'Observer l’organisation d’exercices de crise autour de situations d’attaque cyber.',
+            'Découvrir des éléments d’infrastructure, dont des baies de brassage.'
+          ],
+          knowledge: [
+            'Gestion d’un SI en contexte de crise',
+            'Support informatique',
+            'Rôle des baies de brassage',
+            'Organisation en environnement sensible'
+          ],
+          technicalNote: 'Ces exercices m’ont aidé à comprendre les enjeux de continuité et de coordination autour d’un système d’information en situation de crise. Le travail autour des baies de brassage m’a permis de mieux situer leur rôle dans l’infrastructure réseau, sans présumer de l’administration d’outils ou de matériels non précisés.'
+        },
+        {
+          company: 'TIBCO',
+          location: 'Le Mans',
+          logo: null,
+          logoFile: 'tibco.png',
+          periods: [
+            { start: '25/11/2024', startISO: '2024-11-25', end: '20/12/2024', endISO: '2024-12-20' }
+          ],
+          description: 'Une expérience autour du support technique de postes informatiques et d’imprimantes, avec des opérations de mise à jour, de paramétrage et d’assistance aux utilisateurs.',
+          missions: [
+            'Intervenir sur du matériel informatique.',
+            'Mettre à jour et paramétrer des PC.',
+            'Mettre à jour et paramétrer des imprimantes.',
+            'Participer au support technique et à l’assistance des utilisateurs.'
+          ],
+          knowledge: [
+            'Préparation et configuration de postes',
+            'Maintenance informatique',
+            'Assistance utilisateur',
+            'Lien entre matériel, réglages et usages'
+          ],
+          technicalNote: 'Ces missions m’ont permis de mieux comprendre le cycle de maintenance d’un poste : préparer sa configuration, appliquer des mises à jour et tenir compte des périphériques comme des besoins de la personne qui l’utilise. J’ai aussi découvert les étapes de diagnostic et d’assistance dans un contexte de support.'
+        },
+        {
+          company: 'Mairie de Mantes-la-Jolie',
+          location: 'Mantes-la-Jolie',
+          logo: null,
+          logoFile: 'mantes-la-jolie.png',
+          periods: [
+            { start: '11/03/2024', startISO: '2024-03-11', end: '22/03/2024', endISO: '2024-03-22' }
+          ],
+          description: 'Une première immersion dans le suivi d’une infrastructure informatique : gestion de tickets utilisateurs, participation à la maintenance et découverte de problématiques réseau concrètes.',
+          missions: [
+            'Gérer des tickets et contribuer au support des utilisateurs.',
+            'Participer à la maintenance et au suivi de l’infrastructure informatique.',
+            'Découvrir des sujets de VLAN, de routage et de boucles réseau en couche 2 avec STP.'
+          ],
+          knowledge: [
+            'Gestion de tickets utilisateurs',
+            'Segmentation réseau avec VLAN',
+            'Routage entre réseaux',
+            'STP et prévention des boucles en couche 2'
+          ],
+          technicalNote: 'Cette expérience m’a permis de relier plusieurs notions de réseau à un environnement professionnel réel : les VLAN segmentent les réseaux, le routage permet les échanges entre réseaux, et STP contribue à prévenir les boucles de couche 2. Elle m’a aussi fait découvrir le lien entre le support utilisateur et le suivi de l’infrastructure.'
+        }
+      ];
+
+      const escapeHTML = (value) => String(value).replace(/[&<>"']/g, (character) => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+      })[character]);
+      const stack = document.querySelector('#experience-stack');
+      const count = document.querySelector('#experience-count');
+      const reducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
+      const finePointer = window.matchMedia?.('(pointer: fine) and (hover: hover)').matches ?? false;
+      if (count) count.textContent = String(experiences.length).padStart(2, '0');
+
+      if (stack) {
+        stack.innerHTML = experiences.map((experience, index) => {
+          const number = String(index + 1).padStart(2, '0');
+          const progress = Math.round(((index + 1) / experiences.length) * 100);
+          const logo = experience.logo
+            ? `<img src="${escapeHTML(experience.logo)}" alt="Logo de ${escapeHTML(experience.company)}" loading="lazy" decoding="async" />`
+            : `<div class="logo-placeholder" role="img" aria-label="Logo non fourni pour ${escapeHTML(experience.company)}. Fichier à ajouter : ${escapeHTML(experience.logoFile)}"><strong>LOGO À AJOUTER</strong><small>assets/companies/${escapeHTML(experience.logoFile)}</small></div>`;
+          const periods = experience.periods.map((period) => `
+            <div class="period-row"><time datetime="${escapeHTML(period.startISO)}">${escapeHTML(period.start)}</time><span aria-hidden="true">→</span><time datetime="${escapeHTML(period.endISO)}">${escapeHTML(period.end)}</time></div>
+          `).join('');
+          return `
+            <div class="step-trigger" data-step-trigger="${index}" aria-hidden="true"></div>
+            <article class="experience-slide" data-experience-index="${index}" aria-labelledby="experience-title-${number}" style="--slide-order:${index + 1};--pin-top:${98 + index * 16}px">
+              <div class="experience-card">
+                <div class="experience-identity">
+                  <div class="step-label"><span>ÉTAPE / ${number}</span><strong>${String(experiences.length).padStart(2, '0')}</strong></div>
+                  <div class="company-logo">${logo}</div>
+                  <p class="company-type">Expérience professionnelle</p>
+                  <h2 id="experience-title-${number}">${escapeHTML(experience.company)}</h2>
+                  <p class="company-location">${escapeHTML(experience.location)}</p>
+                  <div class="period-list" role="group" aria-label="Période${experience.periods.length > 1 ? 's' : ''} de l’expérience">${periods}</div>
+                </div>
+                <div class="experience-details">
+                  <p class="experience-summary">${escapeHTML(experience.description)}</p>
+                  <div class="detail-rule" aria-hidden="true"></div>
+                  <div class="detail-grid">
+                    <section class="detail-group" aria-labelledby="missions-${number}">
+                      <h3 id="missions-${number}">Missions</h3>
+                      <ul class="mission-list">${experience.missions.map((mission) => `<li>${escapeHTML(mission)}</li>`).join('')}</ul>
+                    </section>
+                    <section class="detail-group" aria-labelledby="knowledge-${number}">
+                      <h3 id="knowledge-${number}">Connaissances développées</h3>
+                      <div class="knowledge-list">${experience.knowledge.map((item) => `<span class="knowledge-tag">${escapeHTML(item)}</span>`).join('')}</div>
+                    </section>
+                  </div>
+                  <aside class="technical-note"><h3>Lecture technique</h3><p>${escapeHTML(experience.technicalNote)}</p></aside>
+                  <div class="experience-card-foot"><span>Parcours / ${number}</span><div class="progress-track" role="meter" aria-label="Progression du parcours" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${progress}"><span style="--progress:${progress}%"></span></div><span>${number} / ${String(experiences.length).padStart(2, '0')}</span></div>
+                </div>
+              </div>
+            </article>
+          `;
+        }).join('');
+      }
+
+      const slides = [...document.querySelectorAll('.experience-slide')];
+      if (!reducedMotion && 'IntersectionObserver' in window) {
+        document.documentElement.classList.add('motion-ready');
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -10% 0px' });
+        slides.forEach((slide) => revealObserver.observe(slide));
+
+        const setCurrentSlide = (activeIndex) => {
+          slides.forEach((slide, index) => {
+            slide.classList.toggle('is-current', index === activeIndex);
+            slide.classList.toggle('is-past', index < activeIndex);
+          });
+        };
+        const stepObserver = new IntersectionObserver((entries) => {
+          const activeSteps = entries.filter((entry) => entry.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+          if (!activeSteps.length) return;
+          const activeIndex = Number(activeSteps[activeSteps.length - 1].target.dataset.stepTrigger);
+          setCurrentSlide(activeIndex);
+        }, { threshold: 0, rootMargin: '-26% 0px -58% 0px' });
+        document.querySelectorAll('[data-step-trigger]').forEach((trigger) => stepObserver.observe(trigger));
+      } else {
+        slides.forEach((slide) => slide.classList.add('is-visible'));
+      }
+
+      const cursor = document.querySelector('#custom-cursor');
+      if (cursor && finePointer && !reducedMotion) {
+        document.documentElement.classList.add('has-custom-cursor');
+        let activeTileField = null;
+        let pendingTilePosition = null;
+        let tileFrame = 0;
+        const updateTileHighlight = (event) => {
+          const field = event.target instanceof Element ? event.target.closest('[data-tile-field]') : null;
+          if (field !== activeTileField) {
+            activeTileField?.classList.remove('is-highlighted');
+            activeTileField = field;
+            activeTileField?.classList.add('is-highlighted');
+          }
+          if (!field) {
+            pendingTilePosition = null;
+            return;
+          }
+          pendingTilePosition = { field, x: event.clientX, y: event.clientY };
+          if (tileFrame) return;
+          tileFrame = window.requestAnimationFrame(() => {
+            tileFrame = 0;
+            if (!pendingTilePosition) return;
+            const { field: currentField, x, y } = pendingTilePosition;
+            const bounds = currentField.getBoundingClientRect();
+            currentField.style.setProperty('--grid-x', `${x - bounds.left}px`);
+            currentField.style.setProperty('--grid-y', `${y - bounds.top}px`);
+          });
+        };
+        const clearTileHighlight = () => {
+          activeTileField?.classList.remove('is-highlighted');
+          activeTileField = null;
+          pendingTilePosition = null;
+          if (tileFrame) {
+            window.cancelAnimationFrame(tileFrame);
+            tileFrame = 0;
+          }
+        };
+        window.addEventListener('pointermove', (event) => {
+          cursor.style.setProperty('--cursor-x', `${event.clientX}px`);
+          cursor.style.setProperty('--cursor-y', `${event.clientY}px`);
+          updateTileHighlight(event);
+          cursor.classList.add('is-visible');
+          const target = event.target instanceof Element ? event.target.closest('a, button, [data-cursor]') : null;
+          const isView = event.target instanceof Element && Boolean(event.target.closest('[data-cursor="VIEW"]'));
+          cursor.classList.toggle('is-active', Boolean(target));
+          cursor.classList.toggle('is-view', isView);
+          cursor.dataset.label = isView ? 'VIEW' : '';
+        }, { passive: true });
+        document.documentElement.addEventListener('pointerleave', () => {
+          cursor.classList.remove('is-visible');
+          clearTileHighlight();
+        });
+        document.documentElement.addEventListener('pointerenter', () => cursor.classList.add('is-visible'));
+      } else {
+        cursor?.remove();
+      }
+    </script>
+  </body>
+</html>
