@@ -67,7 +67,7 @@
       .graphic-top b { color: var(--accent); font-weight: 400; }
       .graphic-core { position: absolute; inset: 43px 0; display: grid; place-items: center; overflow: hidden; }
       .graphic-core svg { position: absolute; width: 100%; height: 100%; }
-      .graphic-core path, .graphic-core line { fill: none; stroke: #5e6058; stroke-width: 1; vector-effect: non-scaling-stroke; }
+      .graphic-core path, .graphic-core line { fill: none; stroke: #5e6058; stroke-width: 1; }
       .graphic-core .active-line { stroke: var(--accent); stroke-dasharray: 4 5; }
       .graphic-node { position: absolute; display: grid; width: 112px; min-height: 70px; align-content: center; justify-items: start; gap: 6px; padding: 11px; border: 1px solid #5a5c54; background: rgb(21 22 18 / 82%); backdrop-filter: blur(5px); box-shadow: inset 0 1px rgb(255 255 255 / 5%); }
       .graphic-node small { color: var(--accent); font: 9px var(--mono); }
