@@ -2,6 +2,13 @@
         '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
       })[character]);
 
+      const revealDynamicElements = () => {
+        if (!document.documentElement.classList.contains('motion-ready')) return;
+        document.querySelectorAll('[data-reveal]:not(.is-visible)').forEach((element) => {
+          element.classList.add('is-visible');
+        });
+      };
+
       const loadPortfolioData = async () => {
         const response = await fetch('data/index.json');
         if (!response.ok) throw new Error(`Impossible de charger les données (${response.status}).`);
@@ -21,7 +28,7 @@
         }
 
         const skillsGrid = document.querySelector('.skills-grid');
-        if (skillsGrid) {
+        if (skillsGrid && Array.isArray(skills) && skills.length) {
           skillsGrid.innerHTML = skills.map((skill) => `
             <article class="skill-card" data-reveal>
               <span class="card-index">${escapeHTML(skill.index)}</span>
@@ -33,7 +40,7 @@
         }
 
         const projectGrid = document.querySelector('#project-grid');
-        if (projectGrid && projects.length) {
+        if (projectGrid && Array.isArray(projects) && projects.length) {
           projectGrid.innerHTML = projects.map((project, index) => {
             const visualTag = project.demo ? 'a' : 'div';
             const visualHref = project.demo ? ` href="${escapeHTML(project.demo)}" target="_blank" rel="noopener noreferrer" aria-label="Ouvrir le site ${escapeHTML(project.title)}"` : '';
@@ -62,7 +69,7 @@
         }
 
         const educationList = document.querySelector('#education-list');
-        if (educationList && education.length) {
+        if (educationList && Array.isArray(education) && education.length) {
           educationList.innerHTML = education.map((item) => `
           <article class="timeline-item" data-reveal>
             <span class="timeline-date">${escapeHTML(item.date)}</span>
@@ -95,6 +102,7 @@
         if (footerCredit) footerCredit.firstChild.textContent = footer.credit;
         const footerTagline = document.querySelector('.footer-bottom span:nth-child(2)');
         if (footerTagline) footerTagline.textContent = footer.tagline;
+        revealDynamicElements();
       };
 
       loadPortfolioData().catch((error) => {
