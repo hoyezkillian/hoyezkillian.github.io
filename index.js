@@ -1,35 +1,43 @@
-      // Modifier cette liste pour ajouter un projet sans toucher au gabarit de carte.
-      const projects = [
-        {
-          title: 'Keywoz Shop',
-          description: 'Un site de vente de comptes Steam que je développe comme projet personnel. Il me permet d’expérimenter la création d’un site web et de faire progresser mes compétences, étape par étape.',
-          image: '',
-          technologies: ['HTML', 'Projet personnel'],
-          demo: 'https://keywoz-sys.github.io/keywoz-shop/',
-          github: 'https://github.com/keywoz-sys/keywoz-shop',
-          links: [],
-          status: 'En développement',
-          category: 'Développement web'
-        }
-      ];
-
-      // Ajouter ici les formations récentes en premier, puis les plus anciennes.
-      const education = [
-        { date: '2026 — Aujourd’hui', title: 'BTS SIO — option SISR', detail: 'MyDigitalSchool', location: 'Saint-Herblain' },
-        { date: '2023 — 2026', title: 'Baccalauréat professionnel CIEL', detail: 'Cybersécurité, Informatique et réseaux, Électronique', location: 'Lycée Touchard-Washington — Le Mans', result: 'Diplôme obtenu' }
-      ];
-
-
       const escapeHTML = (value) => String(value).replace(/[&<>"']/g, (character) => ({
         '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
       })[character]);
 
-      const projectGrid = document.querySelector('#project-grid');
-      if (projectGrid && projects.length) {
-        projectGrid.innerHTML = projects.map((project, index) => {
-          const visualTag = project.demo ? 'a' : 'div';
-          const visualHref = project.demo ? ` href="${escapeHTML(project.demo)}" target="_blank" rel="noopener noreferrer" aria-label="Ouvrir le site ${escapeHTML(project.title)}"` : '';
-          return `
+      const loadPortfolioData = async () => {
+        const response = await fetch('data/index.json');
+        if (!response.ok) throw new Error(`Impossible de charger les données (${response.status}).`);
+        const { about, skills, projects, education, journey, contact, footer } = await response.json();
+
+        const aboutCopy = document.querySelector('.about-copy');
+        if (aboutCopy) {
+          aboutCopy.querySelector('.about-lede').textContent = about.lede;
+          const paragraphs = aboutCopy.querySelectorAll(':scope > p:not(.about-lede)');
+          about.paragraphs.forEach((paragraph, index) => {
+            if (paragraphs[index]) paragraphs[index].textContent = paragraph;
+          });
+          aboutCopy.querySelector('.about-facts').innerHTML = about.facts.map((fact) => `
+            <div class="fact"><span>${escapeHTML(fact.label)}</span><strong>${escapeHTML(fact.value)}</strong></div>
+          `).join('');
+          aboutCopy.querySelector('.about-cv a').href = about.cv;
+        }
+
+        const skillsGrid = document.querySelector('.skills-grid');
+        if (skillsGrid) {
+          skillsGrid.innerHTML = skills.map((skill) => `
+            <article class="skill-card" data-reveal>
+              <span class="card-index">${escapeHTML(skill.index)}</span>
+              <h3>${escapeHTML(skill.title)}</h3>
+              <p>${escapeHTML(skill.description)}</p>
+              <div class="tag-list">${skill.tags.map((tag) => `<span class="tag">${escapeHTML(tag)}</span>`).join('')}</div>
+            </article>
+          `).join('');
+        }
+
+        const projectGrid = document.querySelector('#project-grid');
+        if (projectGrid && projects.length) {
+          projectGrid.innerHTML = projects.map((project, index) => {
+            const visualTag = project.demo ? 'a' : 'div';
+            const visualHref = project.demo ? ` href="${escapeHTML(project.demo)}" target="_blank" rel="noopener noreferrer" aria-label="Ouvrir le site ${escapeHTML(project.title)}"` : '';
+            return `
           <article class="project-card">
             <${visualTag} class="project-visual"${visualHref} data-reveal="scale">
               <span class="visual-label" aria-hidden="true">PROJET PERSONNEL / ${String(index + 1).padStart(3, '0')}</span>
@@ -50,18 +58,48 @@
             </div>
           </article>
         `;
-        }).join('');
-      }
+          }).join('');
+        }
 
-      const educationList = document.querySelector('#education-list');
-      if (educationList && education.length) {
-        educationList.innerHTML = education.map((item) => `
+        const educationList = document.querySelector('#education-list');
+        if (educationList && education.length) {
+          educationList.innerHTML = education.map((item) => `
           <article class="timeline-item" data-reveal>
             <span class="timeline-date">${escapeHTML(item.date)}</span>
             <div><h3>${escapeHTML(item.title)}</h3><p>${escapeHTML(item.detail)}<br>${escapeHTML(item.location)}${item.result ? `<br>${escapeHTML(item.result)}` : ''}</p></div>
           </article>
         `).join('');
-      }
+        }
+
+        const journeyIntro = document.querySelector('.journey-intro');
+        if (journeyIntro) journeyIntro.textContent = journey.intro;
+        const experienceAccess = document.querySelector('.experience-access');
+        if (experienceAccess) {
+          experienceAccess.href = journey.experienceLink.url;
+          experienceAccess.querySelector('strong').firstChild.textContent = journey.experienceLink.title;
+          experienceAccess.querySelector('.access-copy').textContent = journey.experienceLink.description;
+        }
+
+        const contactAside = document.querySelector('.contact-aside');
+        if (contactAside) {
+          contactAside.querySelector(':scope > p').textContent = contact.description;
+          const emailLink = contactAside.querySelector('.contact-email');
+          emailLink.href = `mailto:${contact.email}`;
+          emailLink.querySelector('span:last-child').textContent = `${contact.email} ↗`;
+          const socialLinks = contactAside.querySelectorAll('.contact-link:not(.contact-email)');
+          socialLinks[0].href = contact.github;
+          socialLinks[1].href = contact.linkedin;
+        }
+
+        const footerCredit = document.querySelector('.footer-credit');
+        if (footerCredit) footerCredit.firstChild.textContent = footer.credit;
+        const footerTagline = document.querySelector('.footer-bottom span:nth-child(2)');
+        if (footerTagline) footerTagline.textContent = footer.tagline;
+      };
+
+      loadPortfolioData().catch((error) => {
+        console.error('Les données du portfolio n’ont pas pu être chargées.', error);
+      });
 
       const menuButton = document.querySelector('.nav-toggle');
       const navigation = document.querySelector('#navigation');

@@ -1,0 +1,91 @@
+{
+  "about": {
+    "lede": "Je m'appelle Killian Hoyez, je suis étudiant en BTS SIO, option SISR, à MyDigitalSchool à Saint-Herblain.",
+    "paragraphs": [
+      "J’aime comprendre comment les choses fonctionnent, puis essayer par moi-même. Le développement web et les réseaux informatiques sont deux terrains qui me motivent : je peux y apprendre en faisant, tester une idée et voir tout de suite ce qu’elle devient.",
+      "Je m’intéresse aussi aux scripts, à l’automatisation et à la personnalisation de certains jeux. Je suis encore en train de construire mes compétences ; mes projets personnels et mes expérimentations font partie de ce parcours."
+    ],
+    "facts": [
+      { "label": "Âge", "value": "18 ans" },
+      { "label": "Formation", "value": "BTS SIO — SISR" },
+      { "label": "Établissement", "value": "MyDigitalSchool" },
+      { "label": "Localisation", "value": "Saint-Herblain" }
+    ],
+    "cv": "assets/CV.pdf"
+  },
+  "skills": [
+    {
+      "index": "01 / WEB",
+      "title": "Développement web",
+      "description": "Créer et faire évoluer des sites internet, en apprenant par des réalisations concrètes.",
+      "tags": ["Création de sites", "Projets personnels"]
+    },
+    {
+      "index": "02 / SISR",
+      "title": "Réseaux & systèmes",
+      "description": "Découvrir les services et les configurations qui permettent aux machines de communiquer.",
+      "tags": ["TCP/IP", "VLAN", "DNS · DHCP", "Windows Server", "Linux", "Virtualisation"]
+    },
+    {
+      "index": "03 / OUTILS",
+      "title": "Support & bonnes pratiques",
+      "description": "Apprendre à diagnostiquer, documenter et garder des environnements simples à suivre.",
+      "tags": ["Support", "Sauvegarde", "Durcissement"]
+    },
+    {
+      "index": "04 / LAB",
+      "title": "Scripts & expérimentation",
+      "description": "Automatiser de petites tâches, personnaliser des expériences et tester de nouvelles idées.",
+      "tags": ["Automatisation", "Expérimentation", "Veille personnelle"]
+    }
+  ],
+  "projects": [
+    {
+      "title": "Keywoz Shop",
+      "description": "Un site de vente de comptes Steam que je développe comme projet personnel. Il me permet d’expérimenter la création d’un site web et de faire progresser mes compétences, étape par étape.",
+      "image": "",
+      "technologies": [
+        "HTML",
+        "Projet personnel"
+      ],
+      "demo": "https://keywoz-sys.github.io/keywoz-shop/",
+      "github": "https://github.com/keywoz-sys/keywoz-shop",
+      "links": [],
+      "status": "En développement",
+      "category": "Développement web"
+    }
+  ],
+  "education": [
+    {
+      "date": "2026 — Aujourd’hui",
+      "title": "BTS SIO — option SISR",
+      "detail": "MyDigitalSchool",
+      "location": "Saint-Herblain"
+    },
+    {
+      "date": "2023 — 2026",
+      "title": "Baccalauréat professionnel CIEL",
+      "detail": "Cybersécurité, Informatique et réseaux, Électronique",
+      "location": "Lycée Touchard-Washington — Le Mans",
+      "result": "Diplôme obtenu"
+    }
+  ],
+  "journey": {
+    "intro": "Du bac professionnel CIEL au BTS SIO SISR : un fil conducteur autour de l’informatique, des réseaux et de leur mise en pratique.",
+    "experienceLink": {
+      "url": "parcours-professionnel/parcours-professionnel.html",
+      "title": "Accéder à mon parcours professionnel",
+      "description": "Découvrir les contextes, missions et connaissances rencontrés au fil de mes stages."
+    }
+  },
+  "contact": {
+    "description": "Un projet, une question ou simplement envie d’échanger ? Vous pouvez m’écrire ou retrouver mes projets en ligne.",
+    "email": "hoyezkillian@gmail.com",
+    "github": "https://github.com/hoyezkillian",
+    "linkedin": "https://www.linkedin.com/in/killian-hoyez"
+  },
+  "footer": {
+    "credit": "Portfolio personnel — étudiant en BTS SIO, option SISR.",
+    "tagline": "Curiosité — Expérimentation — Informatique"
+  }
+}
