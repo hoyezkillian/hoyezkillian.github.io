@@ -1,0 +1,14 @@
+@import url("../parcours-professionnel/parcours-professionnel.css");
+
+.page-layout { width: 100%; }
+.content-section { padding-block: 100px; }
+.content-section:nth-of-type(odd) { background: #171814; }
+.table-wrap { overflow-x: auto; border: 1px solid rgb(250 250 246 / 19%); }
+table { width: 100%; min-width: 760px; border-collapse: collapse; color: var(--white); }
+caption { padding: 16px; color: #92948b; font: 9px var(--mono); letter-spacing: .1em; text-align: left; text-transform: uppercase; }
+th, td { min-width: 180px; padding: 18px; border: 1px solid var(--line); text-align: left; vertical-align: top; }
+th { color: var(--accent); font: 9px var(--mono); letter-spacing: .075em; text-transform: uppercase; }
+td { height: 72px; color: #b5b6af; font-size: 13px; }
+.document-link { margin: 24px 0 0; }
+.empty-content { min-height: 120px; border-top: 1px solid var(--line); }
+@media (max-width: 680px) { .content-section { padding-block: 76px; } }
