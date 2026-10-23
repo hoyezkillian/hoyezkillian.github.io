@@ -58,8 +58,8 @@
               <p>${escapeHTML(project.description)}</p>
               <div class="project-tags">${project.technologies.map((technology) => `<span class="tag">${escapeHTML(technology)}</span>`).join('')}</div>
               <div class="project-links">
-                ${project.demo ? `<a class="button button-primary" href="${escapeHTML(project.demo)}" target="_blank" rel="noopener noreferrer">Voir le site <span aria-hidden="true">&#8599;</span></a>` : ''}
-                ${project.github ? `<a class="button" href="${escapeHTML(project.github)}" target="_blank" rel="noopener noreferrer">Code source <span aria-hidden="true">&#8599;</span></a>` : ''}
+                ${project.demo ? `<a class="button button-quiet" href="${escapeHTML(project.demo)}" target="_blank" rel="noopener noreferrer">Voir le site <span aria-hidden="true">&#8599;</span></a>` : ''}
+                ${project.github ? `<a class="button button-primary" href="${escapeHTML(project.github)}" target="_blank" rel="noopener noreferrer">Code source <span aria-hidden="true">&#8599;</span></a>` : ''}
                 ${(project.links || []).map((link) => `<a class="button" href="${escapeHTML(link.url)}" target="_blank" rel="noopener noreferrer">${escapeHTML(link.label)} <span aria-hidden="true">&#8599;</span></a>`).join('')}
               </div>
             </div>
@@ -140,17 +140,16 @@
       const intro = document.querySelector('#intro-screen');
       const reduceMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
       if (intro && !reduceMotion) {
-        let alreadySeen = false;
-        try { alreadySeen = sessionStorage.getItem('kh-intro-seen') === 'true'; } catch { /* Stockage indisponible : l’intro reste facultative. */ }
-        if (!alreadySeen) {
-          intro.classList.add('is-playing');
-          try { sessionStorage.setItem('kh-intro-seen', 'true'); } catch { /* Le portfolio reste utilisable sans stockage. */ }
-          window.setTimeout(() => intro.remove(), 1450);
-        } else intro.remove();
+        intro.classList.add('is-playing');
+        window.setTimeout(() => intro.remove(), 850);
       } else intro?.remove();
 
       const navLinks = [...document.querySelectorAll('.nav-link')];
-      const sections = navLinks.map((link) => document.querySelector(link.getAttribute('href'))).filter(Boolean);
+      const sections = navLinks
+        .map((link) => link.getAttribute('href'))
+        .filter((href) => href?.startsWith('#'))
+        .map((href) => document.querySelector(href))
+        .filter(Boolean);
       if ('IntersectionObserver' in window) {
         const sectionObserver = new IntersectionObserver((entries) => {
           entries.forEach((entry) => {

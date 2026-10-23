@@ -133,8 +133,8 @@
       .project-links { display: flex; flex-wrap: wrap; gap: 10px; }
       .project-links .button { border-color: transparent; color: var(--ink); }
       .project-links .button:hover { border-color: #272823; background: #272823; color: var(--white); }
-      .project-links .button-primary { border-color: transparent; background: var(--ink); color: var(--white); }
-      .project-links .button-primary:hover { border-color: #373931; background: #373931; }
+      .project-links .button-primary { border-color: transparent; background: var(--accent); color: var(--ink); }
+      .project-links .button-primary:hover { border-color: transparent; background: #e4ff9c; color: var(--ink); }
 
       .journey-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 100px; }
       .journey-intro { max-width: 340px; margin-top: 23px; color: var(--muted); font-size: 13px; line-height: 1.8; }
@@ -247,15 +247,6 @@
         .motion-ready [data-reveal].is-visible { opacity: 1; transform: translateY(0); }
       }
 
-      .intro-screen { position: fixed; z-index: 50; inset: 0; display: grid; place-items: center; background: var(--ink); opacity: 0; pointer-events: none; }
-      .intro-screen.is-playing { opacity: 1; pointer-events: auto; animation: intro-out .35s ease 1.05s both; }
-      .intro-content { display: grid; justify-items: center; gap: 17px; }
-      .intro-mark { display: grid; width: 82px; height: 82px; place-items: center; border: 1px solid var(--accent); color: var(--accent); font: 24px var(--mono); letter-spacing: -.12em; animation: intro-mark .42s ease both; }
-      .intro-name { color: var(--white); font: 11px var(--mono); letter-spacing: .2em; opacity: 0; animation: intro-name .3s ease .36s both; }
-      @keyframes intro-mark { from { transform: scale(.78); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-      @keyframes intro-name { from { transform: translateY(5px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-      @keyframes intro-out { to { opacity: 0; visibility: hidden; } }
-
       .terminal-note { display: inline-flex; flex-wrap: wrap; gap: 7px; margin-top: 18px; color: #84867d; font: 10px var(--mono); line-height: 1.7; }
       .terminal-note strong { color: var(--accent); font-weight: 400; }
       .terminal-note span:last-child { color: #c8c9c0; }
@@ -306,6 +297,15 @@
       .form-status[data-state="error"] { color: #ff9d89; }
       .form-note { margin: 0; color: #74766e; font-size: 10px; line-height: 1.6; }
       .contact-fallback { display: inline; color: var(--white); text-decoration: underline; text-underline-offset: 3px; }
+
+      .intro-screen { position: fixed; z-index: 50; inset: 0; display: grid; place-items: center; background: var(--ink); opacity: 0; pointer-events: none; }
+      .intro-screen.is-playing { opacity: 1; pointer-events: auto; animation: intro-out .25s ease .6s both; }
+      .intro-content { display: grid; justify-items: center; gap: 17px; }
+      .intro-mark { display: grid; width: 82px; height: 82px; place-items: center; border: 1px solid var(--accent); color: var(--accent); font: 24px var(--mono); letter-spacing: -.12em; animation: intro-mark .32s ease both; }
+      .intro-name { color: var(--white); font: 11px var(--mono); letter-spacing: .2em; opacity: 0; animation: intro-name .25s ease .22s both; }
+      @keyframes intro-mark { from { transform: scale(.78); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+      @keyframes intro-name { from { transform: translateY(5px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+      @keyframes intro-out { to { opacity: 0; visibility: hidden; } }
 
       .site-footer { background: #11120f; }
       .footer-grid { display: grid; grid-template-columns: 1.1fr .9fr 1fr; gap: 40px; padding-block: 35px 28px; }
@@ -364,7 +364,6 @@
         .footer-grid > :first-child { grid-column: auto; }
       }
       @media (prefers-reduced-motion: reduce) {
-        .intro-screen { display: none !important; }
         .custom-cursor { display: none !important; }
         .project-card:hover .project-image { transform: none; }
       }
@@ -381,10 +380,13 @@
       .tile-projects { --tile-size: 50px; --tile-line: rgb(16 17 15 / 3.5%); --tile-highlight: rgb(16 17 15 / 9%); --tile-opacity: .66; --tile-mask: linear-gradient(135deg, #000 0%, transparent 96%); }
       .tile-journey { --tile-size: 64px; --tile-line: rgb(255 255 255 / 2.8%); --tile-highlight: rgb(255 255 255 / 8%); --tile-opacity: .52; --tile-mask: radial-gradient(ellipse at 86% 52%, #000 0%, transparent 78%); }
       .tile-contact { --tile-size: 42px; --tile-line: rgb(255 255 255 / 3%); --tile-highlight: rgb(255 255 255 / 9%); --tile-opacity: .7; --tile-mask: radial-gradient(ellipse at 82% 32%, #000 0%, transparent 80%); }
+      .resource-section.section-light { --tile-line: rgb(16 17 15 / 4%); --tile-highlight: rgb(16 17 15 / 9%); --tile-opacity: .62; --tile-mask: radial-gradient(ellipse at 18% 22%, #000 4%, transparent 84%); }
       @keyframes tile-breathe { from { opacity: var(--tile-opacity, .5); } to { opacity: calc(var(--tile-opacity, .5) * .78); } }
 
       .button:not(.button-primary) { background: rgb(255 255 255 / 2%); backdrop-filter: blur(5px); box-shadow: inset 0 1px rgb(255 255 255 / 6%); }
       .button:not(.button-primary):hover { background: rgb(255 255 255 / 5%); }
+      .project-links .button-quiet, .resource-section .button-quiet { border-color: var(--ink); background: var(--ink); color: var(--white); box-shadow: none; }
+      .project-links .button-quiet:hover, .resource-section .button-quiet:hover { border-color: #373931; background: #373931; color: var(--white); }
       .contact-form { border-color: rgb(250 250 246 / 20%); background: rgb(18 19 16 / 88%); backdrop-filter: blur(7px) saturate(108%); box-shadow: inset 0 1px rgb(255 255 255 / 5%), 0 12px 34px rgb(0 0 0 / 12%); }
       .form-field input, .form-field textarea { background: rgb(23 24 20 / 88%); }
       .contact-link { background: rgb(250 250 246 / 1.5%); transition: color .18s ease, background .18s ease; }
