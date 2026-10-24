@@ -24,7 +24,14 @@
           aboutCopy.querySelector('.about-facts').innerHTML = about.facts.map((fact) => `
             <div class="fact"><span>${escapeHTML(fact.label)}</span><strong>${escapeHTML(fact.value)}</strong></div>
           `).join('');
-          aboutCopy.querySelector('.about-cv a').href = about.cv;
+          const cvTrigger = aboutCopy.querySelector('.about-cv a, .about-cv button');
+          if (cvTrigger) cvTrigger.dataset.cvUrl = about.cv;
+          const cvPreview = document.querySelector('.cv-preview iframe');
+          const cvActions = document.querySelectorAll('.cv-modal-actions a');
+          if (cvPreview) cvPreview.src = about.cv;
+          cvActions.forEach((link) => {
+            link.href = about.cv;
+          });
         }
 
         const skillsGrid = document.querySelector('.skills-grid');
@@ -133,6 +140,67 @@
           if (navigation.classList.contains('is-open') && !navigation.contains(event.target) && !menuButton.contains(event.target)) closeMenu();
         });
       }
+
+      const moreAboutToggle = document.querySelector('.more-about-toggle');
+      const moreAboutPanel = document.querySelector('#more-about-panel');
+      const moreAboutOverlay = document.querySelector('.more-about-overlay');
+      const moreAboutClose = document.querySelector('.more-about-close');
+      const closeMoreAbout = () => {
+        if (!moreAboutToggle || !moreAboutPanel || !moreAboutOverlay) return;
+        moreAboutToggle.setAttribute('aria-expanded', 'false');
+        moreAboutPanel.classList.remove('is-open');
+        moreAboutPanel.setAttribute('aria-hidden', 'true');
+        moreAboutOverlay.classList.remove('is-open');
+        document.body.style.overflow = '';
+      };
+      const openMoreAbout = () => {
+        if (!moreAboutToggle || !moreAboutPanel || !moreAboutOverlay) return;
+        closeMenu();
+        moreAboutToggle.setAttribute('aria-expanded', 'true');
+        moreAboutPanel.classList.add('is-open');
+        moreAboutPanel.setAttribute('aria-hidden', 'false');
+        moreAboutOverlay.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+        moreAboutClose?.focus();
+      };
+      moreAboutToggle?.addEventListener('click', () => {
+        if (moreAboutToggle.getAttribute('aria-expanded') === 'true') closeMoreAbout();
+        else openMoreAbout();
+      });
+      moreAboutClose?.addEventListener('click', closeMoreAbout);
+      moreAboutOverlay?.addEventListener('click', closeMoreAbout);
+      moreAboutPanel?.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMoreAbout));
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') closeMoreAbout();
+      });
+
+      const cvOpenButton = document.querySelector('#open-cv');
+      const cvModal = document.querySelector('#cv-modal');
+      const cvModalDialog = document.querySelector('.cv-modal-dialog');
+      const cvCloseButton = document.querySelector('.cv-modal-close');
+      const closeCvModal = () => {
+        if (!cvModal || !cvOpenButton) return;
+        cvModal.classList.remove('is-open');
+        cvModal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        cvOpenButton.focus();
+      };
+      const openCvModal = () => {
+        if (!cvModal || !cvOpenButton) return;
+        cvModal.classList.add('is-open');
+        cvModal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        cvCloseButton?.focus();
+      };
+      cvOpenButton?.addEventListener('click', openCvModal);
+      cvCloseButton?.addEventListener('click', closeCvModal);
+      cvModal?.addEventListener('click', (event) => {
+        if (event.target === cvModal) closeCvModal();
+      });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && cvModal?.classList.contains('is-open')) closeCvModal();
+      });
+      cvModalDialog?.addEventListener('click', (event) => event.stopPropagation());
 
       const year = document.querySelector('#year');
       if (year) year.textContent = String(new Date().getFullYear());
