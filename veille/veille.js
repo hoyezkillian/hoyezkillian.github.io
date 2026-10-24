@@ -7,6 +7,11 @@ if (cursor && finePointer && !reducedMotion) {
   window.addEventListener('pointermove', (event) => {
     cursor.style.setProperty('--cursor-x', `${event.clientX}px`);
     cursor.style.setProperty('--cursor-y', `${event.clientY}px`);
+    const target = event.target instanceof Element ? event.target.closest('a, button, [data-cursor]') : null;
+    cursor.classList.toggle('is-active', Boolean(target));
     cursor.classList.add('is-visible');
   }, { passive: true });
+  document.documentElement.addEventListener('pointerleave', () => {
+    cursor.classList.remove('is-visible', 'is-active');
+  });
 }
