@@ -64,7 +64,7 @@
       .more-about-links a span:last-child { font-size: 18px; }
 
       .hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--line); }
-      .hero::before { position: absolute; inset: 0; background-image: linear-gradient(rgb(255 255 255 / 3%) 1px, transparent 1px), linear-gradient(90deg, rgb(255 255 255 / 3%) 1px, transparent 1px); background-size: 48px 48px; content: ""; pointer-events: none; mask-image: linear-gradient(to bottom, #000, transparent 92%); }
+      .hero::before { position: absolute; inset: 0; background-image: linear-gradient(rgb(255 255 255 / 9%) 1px, transparent 1px), linear-gradient(90deg, rgb(255 255 255 / 9%) 1px, transparent 1px); background-size: 48px 48px; content: ""; pointer-events: none; }
       .hero-inner { position: relative; display: grid; min-height: min(710px, calc(100svh - 72px)); grid-template-columns: 1.12fr .88fr; align-items: center; gap: 56px; padding-block: 78px 84px; }
       .hero-copy { position: relative; z-index: 1; }
       .hero h1 { max-width: 740px; margin: 0; font-size: clamp(70px, 10vw, 138px); font-weight: 680; letter-spacing: -.095em; line-height: .78; }
@@ -404,18 +404,18 @@
         .project-card:hover .project-image { transform: none; }
       }
 
-      .tile-section { position: relative; isolation: isolate; --tile-size: 52px; --tile-line: rgb(255 255 255 / 3%); --tile-highlight: rgb(255 255 255 / 9%); --tile-opacity: .5; --tile-mask: linear-gradient(to bottom, #000, transparent 94%); }
+      .tile-section { position: relative; isolation: isolate; --tile-size: 52px; --tile-line: rgb(255 255 255 / 9%); --tile-highlight: rgb(255 255 255 / 16%); --tile-opacity: 1; }
       .tile-section > .wrap { position: relative; z-index: 1; }
-      .tile-section::before { position: absolute; z-index: 0; inset: 0; content: ""; pointer-events: none; background-image: linear-gradient(var(--tile-line) 1px, transparent 1px), linear-gradient(90deg, var(--tile-line) 1px, transparent 1px); background-size: var(--tile-size) var(--tile-size); opacity: var(--tile-opacity); -webkit-mask-image: var(--tile-mask); mask-image: var(--tile-mask); animation: tile-breathe 15s ease-in-out infinite alternate; }
+      .tile-section::before { position: absolute; z-index: 0; inset: 0; content: ""; pointer-events: none; background-image: linear-gradient(var(--tile-line) 1px, transparent 1px), linear-gradient(90deg, var(--tile-line) 1px, transparent 1px); background-size: var(--tile-size) var(--tile-size); opacity: var(--tile-opacity); animation: tile-breathe 15s ease-in-out infinite alternate; }
       .tile-glow { position: absolute; z-index: 0; inset: 0; display: block; pointer-events: none; contain: paint; background-image: linear-gradient(var(--tile-highlight) 1px, transparent 1px), linear-gradient(90deg, var(--tile-highlight) 1px, transparent 1px); background-size: var(--tile-size) var(--tile-size); opacity: 0; -webkit-mask-image: radial-gradient(circle 132px at var(--tile-x, -500px) var(--tile-y, -500px), #000 0, transparent 100%); mask-image: radial-gradient(circle 132px at var(--tile-x, -500px) var(--tile-y, -500px), #000 0, transparent 100%); transition: opacity .24s ease; }
       .tile-section.is-pointer-near .tile-glow { opacity: 1; }
-      .tile-hero { --tile-size: 48px; --tile-line: rgb(255 255 255 / 3%); --tile-highlight: rgb(255 255 255 / 10%); --tile-opacity: 1; --tile-mask: linear-gradient(to bottom, #000, transparent 92%); }
-      .tile-about { --tile-size: 58px; --tile-line: rgb(16 17 15 / 4%); --tile-highlight: rgb(16 17 15 / 9%); --tile-opacity: .62; --tile-mask: radial-gradient(ellipse at 18% 22%, #000 4%, transparent 84%); }
-      .tile-skills { --tile-size: 43px; --tile-line: rgb(255 255 255 / 3.5%); --tile-highlight: rgb(255 255 255 / 10%); --tile-opacity: .68; --tile-mask: radial-gradient(ellipse at 72% 45%, #000 5%, transparent 88%); }
-      .tile-projects { --tile-size: 50px; --tile-line: rgb(16 17 15 / 3.5%); --tile-highlight: rgb(16 17 15 / 9%); --tile-opacity: .66; --tile-mask: linear-gradient(135deg, #000 0%, transparent 96%); }
-      .tile-journey { --tile-size: 64px; --tile-line: rgb(255 255 255 / 2.8%); --tile-highlight: rgb(255 255 255 / 8%); --tile-opacity: .52; --tile-mask: radial-gradient(ellipse at 86% 52%, #000 0%, transparent 78%); }
-      .tile-contact { --tile-size: 42px; --tile-line: rgb(255 255 255 / 3%); --tile-highlight: rgb(255 255 255 / 9%); --tile-opacity: .7; --tile-mask: radial-gradient(ellipse at 82% 32%, #000 0%, transparent 80%); }
-      .resource-section.section-light { --tile-line: rgb(16 17 15 / 4%); --tile-highlight: rgb(16 17 15 / 9%); --tile-opacity: .62; --tile-mask: radial-gradient(ellipse at 18% 22%, #000 4%, transparent 84%); }
+      .tile-hero { --tile-size: 48px; --tile-line: rgb(255 255 255 / 9%); --tile-highlight: rgb(255 255 255 / 16%); }
+      .tile-about { --tile-size: 58px; --tile-line: rgb(16 17 15 / 11%); --tile-highlight: rgb(16 17 15 / 18%); }
+      .tile-skills { --tile-size: 43px; --tile-line: rgb(255 255 255 / 9%); --tile-highlight: rgb(255 255 255 / 16%); }
+      .tile-projects { --tile-size: 50px; --tile-line: rgb(16 17 15 / 10%); --tile-highlight: rgb(16 17 15 / 17%); }
+      .tile-journey { --tile-size: 64px; --tile-line: rgb(255 255 255 / 8%); --tile-highlight: rgb(255 255 255 / 15%); }
+      .tile-contact { --tile-size: 42px; --tile-line: rgb(255 255 255 / 9%); --tile-highlight: rgb(255 255 255 / 16%); }
+      .resource-section.section-light { --tile-line: rgb(16 17 15 / 11%); --tile-highlight: rgb(16 17 15 / 18%); }
       @keyframes tile-breathe { from { opacity: var(--tile-opacity, .5); } to { opacity: calc(var(--tile-opacity, .5) * .78); } }
 
       .button:not(.button-primary) { background: rgb(255 255 255 / 2%); backdrop-filter: blur(5px); box-shadow: inset 0 1px rgb(255 255 255 / 6%); }
