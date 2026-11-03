@@ -305,40 +305,6 @@
       const finePointer = window.matchMedia?.('(pointer: fine) and (hover: hover)').matches ?? false;
       if (cursor && finePointer && !reduceMotion) {
         document.documentElement.classList.add('has-custom-cursor');
-        let activeTileField = null;
-        let pendingTilePosition = null;
-        let tileFrame = 0;
-        const updateTileHighlight = (event) => {
-          const field = event.target instanceof Element ? event.target.closest('[data-tile-field]') : null;
-          if (field !== activeTileField) {
-            activeTileField?.classList.remove('is-pointer-near');
-            activeTileField = field;
-            activeTileField?.classList.add('is-pointer-near');
-          }
-          if (!field) {
-            pendingTilePosition = null;
-            return;
-          }
-          pendingTilePosition = { field, x: event.clientX, y: event.clientY };
-          if (tileFrame) return;
-          tileFrame = window.requestAnimationFrame(() => {
-            tileFrame = 0;
-            if (!pendingTilePosition) return;
-            const { field: currentField, x, y } = pendingTilePosition;
-            const bounds = currentField.getBoundingClientRect();
-            currentField.style.setProperty('--tile-x', `${x - bounds.left}px`);
-            currentField.style.setProperty('--tile-y', `${y - bounds.top}px`);
-          });
-        };
-        const clearTileHighlight = () => {
-          activeTileField?.classList.remove('is-pointer-near');
-          activeTileField = null;
-          pendingTilePosition = null;
-          if (tileFrame) {
-            window.cancelAnimationFrame(tileFrame);
-            tileFrame = 0;
-          }
-        };
         const isTextEntry = (target) => target instanceof Element
           && Boolean(target.closest('input:not([type="hidden"]), textarea, select, [contenteditable="true"]'));
         let cursorFrame = 0;
@@ -363,13 +329,11 @@
           cursor.dataset.label = isView ? 'VIEW' : '';
         };
         window.addEventListener('pointermove', (event) => {
-          updateTileHighlight(event);
           pendingCursorEvent = event;
           if (!cursorFrame) cursorFrame = window.requestAnimationFrame(renderCursor);
         }, { passive: true });
         document.documentElement.addEventListener('pointerleave', () => {
           cursor.classList.remove('is-visible');
-          clearTileHighlight();
           pendingCursorEvent = null;
           if (cursorFrame) {
             window.cancelAnimationFrame(cursorFrame);
