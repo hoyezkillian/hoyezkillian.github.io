@@ -150,6 +150,34 @@
       const cursor = document.querySelector('#custom-cursor');
       if (cursor && finePointer && !reducedMotion) {
         document.documentElement.classList.add('has-custom-cursor');
+        const tileFields = [...document.querySelectorAll('[data-tile-field]')];
+        const tileBounds = new Map();
+        const updateTileBounds = () => {
+          tileBounds.clear();
+          tileFields.forEach((field) => tileBounds.set(field, field.getBoundingClientRect()));
+        };
+        let tileBoundsFrame = 0;
+        const scheduleTileBoundsUpdate = () => {
+          if (tileBoundsFrame) return;
+          tileBoundsFrame = window.requestAnimationFrame(() => {
+            tileBoundsFrame = 0;
+            updateTileBounds();
+          });
+        };
+        updateTileBounds();
+        window.addEventListener('resize', scheduleTileBoundsUpdate, { passive: true });
+        window.addEventListener('scroll', scheduleTileBoundsUpdate, { passive: true });
+        let activeTileField = null;
+        let pendingTilePosition = null;
+        const updateTileHighlight = (event) => {
+          const field = event.target instanceof Element ? event.target.closest('[data-tile-field]') : null;
+          if (field !== activeTileField) {
+            activeTileField?.classList.remove('is-highlighted');
+            activeTileField = field;
+            activeTileField?.classList.add('is-highlighted');
+          }
+          pendingTilePosition = field ? { field, x: event.clientX, y: event.clientY } : null;
+        };
         let cursorFrame = 0;
         let pendingCursorEvent = null;
         const renderCursor = () => {
@@ -159,6 +187,14 @@
           pendingCursorEvent = null;
           cursor.style.setProperty('--cursor-x', `${event.clientX}px`);
           cursor.style.setProperty('--cursor-y', `${event.clientY}px`);
+          if (pendingTilePosition) {
+            const { field, x, y } = pendingTilePosition;
+            const bounds = tileBounds.get(field);
+            if (bounds) {
+              field.style.setProperty('--grid-x', `${x - bounds.left}px`);
+              field.style.setProperty('--grid-y', `${y - bounds.top}px`);
+            }
+          }
           cursor.classList.add('is-visible');
           const target = event.target instanceof Element ? event.target.closest('a, button, [data-cursor]') : null;
           const isView = event.target instanceof Element && Boolean(event.target.closest('[data-cursor="VIEW"]'));
@@ -172,6 +208,9 @@
         }, { passive: true });
         document.documentElement.addEventListener('pointerleave', () => {
           cursor.classList.remove('is-visible');
+          activeTileField?.classList.remove('is-highlighted');
+          activeTileField = null;
+          pendingTilePosition = null;
           pendingCursorEvent = null;
           if (cursorFrame) {
             window.cancelAnimationFrame(cursorFrame);

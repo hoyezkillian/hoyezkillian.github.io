@@ -305,6 +305,35 @@
       const finePointer = window.matchMedia?.('(pointer: fine) and (hover: hover)').matches ?? false;
       if (cursor && finePointer && !reduceMotion) {
         document.documentElement.classList.add('has-custom-cursor');
+        const tileFields = [...document.querySelectorAll('[data-tile-field]')];
+        const tileBounds = new Map();
+        const updateTileBounds = () => {
+          tileBounds.clear();
+          tileFields.forEach((field) => tileBounds.set(field, field.getBoundingClientRect()));
+        };
+        let tileBoundsFrame = 0;
+        const scheduleTileBoundsUpdate = () => {
+          if (tileBoundsFrame) return;
+          tileBoundsFrame = window.requestAnimationFrame(() => {
+            tileBoundsFrame = 0;
+            updateTileBounds();
+          });
+        };
+        updateTileBounds();
+        window.addEventListener('resize', scheduleTileBoundsUpdate, { passive: true });
+        window.addEventListener('scroll', scheduleTileBoundsUpdate, { passive: true });
+        let activeTileField = null;
+        let pendingTilePosition = null;
+        const updateTileHighlight = (event) => {
+          const field = event.target instanceof Element ? event.target.closest('[data-tile-field]') : null;
+          if (field !== activeTileField) {
+            activeTileField?.classList.remove('is-pointer-near');
+            activeTileField = field;
+            activeTileField?.classList.add('is-pointer-near');
+          }
+          if (field) pendingTilePosition = { field, x: event.clientX, y: event.clientY };
+          else pendingTilePosition = null;
+        };
         const isTextEntry = (target) => target instanceof Element
           && Boolean(target.closest('input:not([type="hidden"]), textarea, select, [contenteditable="true"]'));
         let cursorFrame = 0;
@@ -316,6 +345,14 @@
           pendingCursorEvent = null;
           cursor.style.setProperty('--cursor-x', `${event.clientX}px`);
           cursor.style.setProperty('--cursor-y', `${event.clientY}px`);
+          if (pendingTilePosition) {
+            const { field, x, y } = pendingTilePosition;
+            const bounds = tileBounds.get(field);
+            if (bounds) {
+              field.style.setProperty('--tile-x', `${x - bounds.left}px`);
+              field.style.setProperty('--tile-y', `${y - bounds.top}px`);
+            }
+          }
           if (isTextEntry(event.target)) {
             cursor.classList.remove('is-visible', 'is-active', 'is-view');
             cursor.dataset.label = '';
@@ -334,6 +371,9 @@
         }, { passive: true });
         document.documentElement.addEventListener('pointerleave', () => {
           cursor.classList.remove('is-visible');
+          activeTileField?.classList.remove('is-pointer-near');
+          activeTileField = null;
+          pendingTilePosition = null;
           pendingCursorEvent = null;
           if (cursorFrame) {
             window.cancelAnimationFrame(cursorFrame);
