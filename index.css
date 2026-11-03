@@ -374,7 +374,7 @@
       [hidden] { display: none !important; }
       .site-header, .button, .nav-link, .contact-link, .project-card, .footer-nav a, .footer-socials a { -webkit-tap-highlight-color: transparent; }
 
-      .custom-cursor { position: fixed; z-index: 60; top: 0; left: 0; display: grid; width: 22px; height: 22px; place-items: center; border: 1px solid var(--accent); border-radius: 50%; color: var(--ink); font: 8px var(--mono); opacity: 0; pointer-events: none; transform: translate3d(var(--cursor-x, -100px), var(--cursor-y, -100px), 0) translate(-50%, -50%); box-shadow: 0 0 0 1px rgb(10 11 9 / 88%), 0 0 0 2px rgb(255 255 255 / 74%); transition: width .18s ease, height .18s ease, background .18s ease, opacity .18s ease, box-shadow .18s ease; }
+      .custom-cursor { position: fixed; z-index: 60; top: 0; left: 0; display: grid; width: 22px; height: 22px; place-items: center; border: 1px solid var(--accent); border-radius: 50%; color: var(--ink); font: 8px var(--mono); opacity: 0; pointer-events: none; transform: translate3d(var(--cursor-x, -100px), var(--cursor-y, -100px), 0) translate(-50%, -50%); will-change: transform; box-shadow: 0 0 0 1px rgb(10 11 9 / 88%), 0 0 0 2px rgb(255 255 255 / 74%); transition: width .18s ease, height .18s ease, background .18s ease, opacity .18s ease, box-shadow .18s ease; }
       .custom-cursor.is-visible { opacity: 1; }
       .custom-cursor.is-active { width: 42px; height: 42px; background: var(--accent); }
       .custom-cursor.is-view { width: 42px; height: 42px; background: var(--accent); }
@@ -416,10 +416,9 @@
 
       .tile-section { position: relative; isolation: isolate; --tile-size: 52px; --tile-line: rgb(255 255 255 / 3%); --tile-highlight: rgb(255 255 255 / 9%); --tile-opacity: .5; --tile-mask: linear-gradient(to bottom, #000, transparent 94%); }
       .tile-section > .wrap { position: relative; z-index: 1; }
-      .tile-section::before, .tile-section::after { position: absolute; z-index: 0; inset: 0; content: ""; pointer-events: none; }
-      .tile-section::before { background-image: linear-gradient(var(--tile-line) 1px, transparent 1px), linear-gradient(90deg, var(--tile-line) 1px, transparent 1px); background-size: var(--tile-size) var(--tile-size); opacity: var(--tile-opacity); -webkit-mask-image: var(--tile-mask); mask-image: var(--tile-mask); animation: tile-breathe 15s ease-in-out infinite alternate; }
-      .tile-section::after { background-image: linear-gradient(var(--tile-highlight) 1px, transparent 1px), linear-gradient(90deg, var(--tile-highlight) 1px, transparent 1px); background-size: var(--tile-size) var(--tile-size); opacity: 0; -webkit-mask-image: radial-gradient(circle 132px at var(--tile-x, -500px) var(--tile-y, -500px), #000 0, transparent 100%); mask-image: radial-gradient(circle 132px at var(--tile-x, -500px) var(--tile-y, -500px), #000 0, transparent 100%); transition: opacity .24s ease; }
-      .tile-section.is-pointer-near::after { opacity: 1; }
+      .tile-section::before { position: absolute; z-index: 0; inset: 0; content: ""; pointer-events: none; background-image: linear-gradient(var(--tile-line) 1px, transparent 1px), linear-gradient(90deg, var(--tile-line) 1px, transparent 1px); background-size: var(--tile-size) var(--tile-size); opacity: var(--tile-opacity); -webkit-mask-image: var(--tile-mask); mask-image: var(--tile-mask); animation: tile-breathe 15s ease-in-out infinite alternate; }
+      .tile-glow { position: absolute; z-index: 0; inset: 0; display: block; pointer-events: none; contain: paint; background-image: linear-gradient(var(--tile-highlight) 1px, transparent 1px), linear-gradient(90deg, var(--tile-highlight) 1px, transparent 1px); background-size: var(--tile-size) var(--tile-size); opacity: 0; -webkit-mask-image: radial-gradient(circle 132px at var(--tile-x, -500px) var(--tile-y, -500px), #000 0, transparent 100%); mask-image: radial-gradient(circle 132px at var(--tile-x, -500px) var(--tile-y, -500px), #000 0, transparent 100%); transition: opacity .24s ease; }
+      .tile-section.is-pointer-near .tile-glow { opacity: 1; }
       .tile-hero { --tile-size: 48px; --tile-line: rgb(255 255 255 / 3%); --tile-highlight: rgb(255 255 255 / 10%); --tile-opacity: 1; --tile-mask: linear-gradient(to bottom, #000, transparent 92%); }
       .tile-about { --tile-size: 58px; --tile-line: rgb(16 17 15 / 4%); --tile-highlight: rgb(16 17 15 / 9%); --tile-opacity: .62; --tile-mask: radial-gradient(ellipse at 18% 22%, #000 4%, transparent 84%); }
       .tile-skills { --tile-size: 43px; --tile-line: rgb(255 255 255 / 3.5%); --tile-highlight: rgb(255 255 255 / 10%); --tile-opacity: .68; --tile-mask: radial-gradient(ellipse at 72% 45%, #000 5%, transparent 88%); }
@@ -441,14 +440,14 @@
       @media (max-width: 680px) {
         .tile-section { --tile-size: 58px; }
         .tile-section::before { animation: none; }
-        .tile-section::after { display: none; }
+        .tile-glow { display: none; }
         .site-header, .hero-graphic, .graphic-node, .skill-card, .contact-form, .back-top, .button:not(.button-primary) { backdrop-filter: none; }
         .site-header { background: rgb(16 17 15 / 94%); }
         .contact-form { background: rgb(18 19 16 / 96%); }
       }
       @media (prefers-reduced-motion: reduce) {
         .tile-section::before { animation: none !important; }
-        .tile-section::after { display: none !important; }
+        .tile-glow { display: none !important; }
       }
     
       .experience-access { position: relative; display: grid; min-height: 198px; align-content: center; gap: 13px; overflow: hidden; padding: 24px; border: 1px solid #53564d; background: rgb(250 250 246 / 4%); backdrop-filter: blur(8px) saturate(108%); box-shadow: inset 0 1px rgb(255 255 255 / 6%); transition: border-color .2s ease, background .2s ease, transform .2s ease, box-shadow .2s ease; }
