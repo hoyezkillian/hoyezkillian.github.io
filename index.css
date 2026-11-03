@@ -374,14 +374,6 @@
       [hidden] { display: none !important; }
       .site-header, .button, .nav-link, .contact-link, .project-card, .footer-nav a, .footer-socials a { -webkit-tap-highlight-color: transparent; }
 
-      .custom-cursor { position: fixed; z-index: 60; top: 0; left: 0; display: grid; width: 22px; height: 22px; place-items: center; border: 1px solid var(--accent); border-radius: 50%; color: var(--ink); font: 8px var(--mono); opacity: 0; pointer-events: none; transform: translate3d(var(--cursor-x, -100px), var(--cursor-y, -100px), 0) translate(-50%, -50%); will-change: transform; box-shadow: 0 0 0 1px rgb(10 11 9 / 88%), 0 0 0 2px rgb(255 255 255 / 74%); transition: width .18s ease, height .18s ease, background .18s ease, opacity .18s ease, box-shadow .18s ease; }
-      .custom-cursor.is-visible { opacity: 1; }
-      .custom-cursor.is-active { width: 42px; height: 42px; background: var(--accent); }
-      .custom-cursor.is-view { width: 42px; height: 42px; background: var(--accent); }
-      .custom-cursor::after { content: attr(data-label); opacity: 0; }
-      .custom-cursor.is-view::after { opacity: 1; }
-      .has-custom-cursor, .has-custom-cursor a, .has-custom-cursor button { cursor: none !important; }
-      .has-custom-cursor input, .has-custom-cursor textarea { cursor: text !important; }
       @media (prefers-reduced-motion: no-preference) {
         .motion-ready [data-reveal="slide"] { transform: translateX(-18px); }
         .motion-ready [data-reveal="slide"].is-visible { transform: translateX(0); }
@@ -390,7 +382,6 @@
         .motion-ready [data-reveal="scale"] { transform: scale(.97); }
         .motion-ready [data-reveal="scale"].is-visible { transform: scale(1); }
       }
-      @media (pointer: coarse), (hover: none) { .custom-cursor { display: none !important; } }
       @media (max-width: 680px) {
         .project-copy { grid-template-columns: 1fr; }
         .project-links { justify-content: flex-start; }
@@ -410,7 +401,6 @@
         .footer-grid > :first-child { grid-column: auto; }
       }
       @media (prefers-reduced-motion: reduce) {
-        .custom-cursor { display: none !important; }
         .project-card:hover .project-image { transform: none; }
       }
 

@@ -301,10 +301,8 @@
         updateBackToTop();
       }
 
-      const cursor = document.querySelector('#custom-cursor');
       const finePointer = window.matchMedia?.('(pointer: fine) and (hover: hover)').matches ?? false;
-      if (cursor && finePointer && !reduceMotion) {
-        document.documentElement.classList.add('has-custom-cursor');
+      if (finePointer && !reduceMotion) {
         const tileFields = [...document.querySelectorAll('[data-tile-field]')];
         const tileGlows = new Map();
         tileFields.forEach((field) => {
@@ -351,44 +349,10 @@
           activeTileField?.classList.remove('is-pointer-near');
           activeTileField = null;
         };
-        const isTextEntry = (target) => target instanceof Element
-          && Boolean(target.closest('input:not([type="hidden"]), textarea, select, [contenteditable="true"]'));
-        let cursorFrame = 0;
-        let pendingCursorX = 0;
-        let pendingCursorY = 0;
-        let pendingCursorTarget = null;
-        const renderCursor = () => {
-          cursorFrame = 0;
-          cursor.style.setProperty('--cursor-x', `${pendingCursorX}px`);
-          cursor.style.setProperty('--cursor-y', `${pendingCursorY}px`);
-          const target = pendingCursorTarget;
-          if (isTextEntry(target)) {
-            cursor.classList.remove('is-visible', 'is-active', 'is-view');
-            cursor.dataset.label = '';
-            return;
-          }
-          cursor.classList.add('is-visible');
-          const interactiveTarget = target instanceof Element ? target.closest('a, button, [data-cursor]') : null;
-          const isView = target instanceof Element && Boolean(target.closest('[data-cursor="VIEW"]'));
-          cursor.classList.toggle('is-active', Boolean(interactiveTarget));
-          cursor.classList.toggle('is-view', isView);
-          cursor.dataset.label = isView ? 'VIEW' : '';
-        };
         window.addEventListener('pointermove', (event) => {
-          pendingCursorX = event.clientX;
-          pendingCursorY = event.clientY;
-          pendingCursorTarget = event.target;
           updateTileHighlight(event);
-          if (!cursorFrame) cursorFrame = window.requestAnimationFrame(renderCursor);
         }, { passive: true });
         document.documentElement.addEventListener('pointerleave', () => {
-          cursor.classList.remove('is-visible');
           clearTileHighlight();
-          pendingCursorTarget = null;
-          if (cursorFrame) {
-            window.cancelAnimationFrame(cursorFrame);
-            cursorFrame = 0;
-          }
         });
-        document.documentElement.addEventListener('pointerenter', () => cursor.classList.add('is-visible'));
-      } else cursor?.remove();
+      }
