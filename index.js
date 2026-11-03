@@ -341,10 +341,15 @@
         };
         const isTextEntry = (target) => target instanceof Element
           && Boolean(target.closest('input:not([type="hidden"]), textarea, select, [contenteditable="true"]'));
-        window.addEventListener('pointermove', (event) => {
+        let cursorFrame = 0;
+        let pendingCursorEvent = null;
+        const renderCursor = () => {
+          cursorFrame = 0;
+          if (!pendingCursorEvent) return;
+          const event = pendingCursorEvent;
+          pendingCursorEvent = null;
           cursor.style.setProperty('--cursor-x', `${event.clientX}px`);
           cursor.style.setProperty('--cursor-y', `${event.clientY}px`);
-          updateTileHighlight(event);
           if (isTextEntry(event.target)) {
             cursor.classList.remove('is-visible', 'is-active', 'is-view');
             cursor.dataset.label = '';
@@ -356,10 +361,20 @@
           cursor.classList.toggle('is-active', Boolean(target));
           cursor.classList.toggle('is-view', isView);
           cursor.dataset.label = isView ? 'VIEW' : '';
+        };
+        window.addEventListener('pointermove', (event) => {
+          updateTileHighlight(event);
+          pendingCursorEvent = event;
+          if (!cursorFrame) cursorFrame = window.requestAnimationFrame(renderCursor);
         }, { passive: true });
         document.documentElement.addEventListener('pointerleave', () => {
           cursor.classList.remove('is-visible');
           clearTileHighlight();
+          pendingCursorEvent = null;
+          if (cursorFrame) {
+            window.cancelAnimationFrame(cursorFrame);
+            cursorFrame = 0;
+          }
         });
         document.documentElement.addEventListener('pointerenter', () => cursor.classList.add('is-visible'));
       } else cursor?.remove();

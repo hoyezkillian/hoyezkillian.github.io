@@ -119,7 +119,7 @@
       .footer-inner { display: flex; min-height: 72px; align-items: center; justify-content: space-between; gap: 20px; color: #888a81; font-size: 10px; }
       .footer-top { color: var(--white); font: 9px var(--mono); letter-spacing: .08em; text-transform: uppercase; }
 
-      .custom-cursor { position: fixed; z-index: 80; top: 0; left: 0; display: grid; width: 22px; height: 22px; place-items: center; border: 1px solid var(--accent); border-radius: 50%; color: var(--ink); font: 8px var(--mono); opacity: 0; pointer-events: none; transform: translate3d(var(--cursor-x, -100px), var(--cursor-y, -100px), 0) translate(-50%, -50%); box-shadow: 0 0 0 1px rgb(10 11 9 / 88%), 0 0 0 2px rgb(255 255 255 / 74%); transition: width .18s ease, height .18s ease, background .18s ease, opacity .18s ease, box-shadow .18s ease; }
+      .custom-cursor { position: fixed; z-index: 80; top: 0; left: 0; display: grid; width: 22px; height: 22px; place-items: center; border: 1px solid var(--accent); border-radius: 50%; color: var(--ink); font: 8px var(--mono); opacity: 0; pointer-events: none; transform: translate3d(var(--cursor-x, -100px), var(--cursor-y, -100px), 0) translate(-50%, -50%); will-change: transform; box-shadow: 0 0 0 1px rgb(10 11 9 / 88%), 0 0 0 2px rgb(255 255 255 / 74%); transition: width .18s ease, height .18s ease, background .18s ease, opacity .18s ease, box-shadow .18s ease; }
       .custom-cursor.is-visible { opacity: 1; }
       .custom-cursor.is-active { width: 42px; height: 42px; background: var(--accent); }
       .custom-cursor.is-view { width: 42px; height: 42px; background: var(--accent); }
