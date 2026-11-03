@@ -28,7 +28,7 @@
           if (cvTrigger) cvTrigger.dataset.cvUrl = about.cv;
           const cvPreview = document.querySelector('.cv-preview iframe');
           const cvActions = document.querySelectorAll('.cv-modal-actions a');
-          if (cvPreview) cvPreview.src = about.cv;
+          if (cvPreview) cvPreview.dataset.src = about.cv;
           cvActions.forEach((link) => {
             link.href = about.cv;
           });
@@ -178,15 +178,21 @@
       const cvModal = document.querySelector('#cv-modal');
       const cvModalDialog = document.querySelector('.cv-modal-dialog');
       const cvCloseButton = document.querySelector('.cv-modal-close');
+      const cvPreview = document.querySelector('.cv-preview iframe');
       const closeCvModal = () => {
         if (!cvModal || !cvOpenButton) return;
         cvModal.classList.remove('is-open');
         cvModal.setAttribute('aria-hidden', 'true');
+        cvPreview?.removeAttribute('src');
         document.body.style.overflow = '';
         cvOpenButton.focus();
       };
       const openCvModal = () => {
         if (!cvModal || !cvOpenButton) return;
+        if (cvPreview && !cvPreview.getAttribute('src')) {
+          const source = cvPreview.dataset.src;
+          if (source) cvPreview.src = source;
+        }
         cvModal.classList.add('is-open');
         cvModal.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';

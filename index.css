@@ -123,8 +123,8 @@
       .fact strong { font-size: 13px; font-weight: 620; }
       .about-cv { display: flex; justify-content: center; margin-top: 30px; }
       .about-cv .button { cursor: pointer; }
-      .cv-modal { position: fixed; z-index: 50; inset: 0; display: grid; place-items: center; padding: 24px; background: rgb(0 0 0 / 72%); opacity: 0; pointer-events: none; transition: opacity .24s ease; }
-      .cv-modal.is-open { opacity: 1; pointer-events: auto; }
+      .cv-modal { position: fixed; z-index: 50; inset: 0; display: none; place-items: center; padding: 24px; background: rgb(0 0 0 / 72%); opacity: 0; pointer-events: none; }
+      .cv-modal.is-open { display: grid; opacity: 1; pointer-events: auto; }
       .cv-modal-dialog { display: flex; width: min(920px, 100%); height: min(90vh, 820px); flex-direction: column; border: 1px solid #4d4f47; background: var(--ink); box-shadow: 0 22px 70px rgb(0 0 0 / 35%); transform: translateY(12px); transition: transform .24s ease; }
       .cv-modal.is-open .cv-modal-dialog { transform: translateY(0); }
       .cv-modal-header { display: flex; min-height: 62px; align-items: center; justify-content: space-between; gap: 20px; padding: 0 18px 0 24px; border-bottom: 1px solid var(--line); }
