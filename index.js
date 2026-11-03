@@ -311,11 +311,11 @@
           tileBounds.clear();
           tileFields.forEach((field) => tileBounds.set(field, field.getBoundingClientRect()));
         };
-        let tileBoundsFrame = 0;
+        let boundsFrame = 0;
         const scheduleTileBoundsUpdate = () => {
-          if (tileBoundsFrame) return;
-          tileBoundsFrame = window.requestAnimationFrame(() => {
-            tileBoundsFrame = 0;
+          if (boundsFrame) return;
+          boundsFrame = window.requestAnimationFrame(() => {
+            boundsFrame = 0;
             updateTileBounds();
           });
         };
@@ -324,6 +324,7 @@
         window.addEventListener('scroll', scheduleTileBoundsUpdate, { passive: true });
         let activeTileField = null;
         let pendingTilePosition = null;
+        let tileFrame = 0;
         const updateTileHighlight = (event) => {
           const field = event.target instanceof Element ? event.target.closest('[data-tile-field]') : null;
           if (field !== activeTileField) {
@@ -331,28 +332,37 @@
             activeTileField = field;
             activeTileField?.classList.add('is-pointer-near');
           }
-          if (field) pendingTilePosition = { field, x: event.clientX, y: event.clientY };
-          else pendingTilePosition = null;
+          if (!field) {
+            pendingTilePosition = null;
+            return;
+          }
+          pendingTilePosition = { field, x: event.clientX, y: event.clientY };
+          if (tileFrame) return;
+          tileFrame = window.requestAnimationFrame(() => {
+            tileFrame = 0;
+            if (!pendingTilePosition) return;
+            const { field: currentField, x, y } = pendingTilePosition;
+            const bounds = tileBounds.get(currentField);
+            if (!bounds) return;
+            currentField.style.setProperty('--tile-x', `${x - bounds.left}px`);
+            currentField.style.setProperty('--tile-y', `${y - bounds.top}px`);
+          });
+        };
+        const clearTileHighlight = () => {
+          activeTileField?.classList.remove('is-pointer-near');
+          activeTileField = null;
+          pendingTilePosition = null;
+          if (tileFrame) {
+            window.cancelAnimationFrame(tileFrame);
+            tileFrame = 0;
+          }
         };
         const isTextEntry = (target) => target instanceof Element
           && Boolean(target.closest('input:not([type="hidden"]), textarea, select, [contenteditable="true"]'));
-        let cursorFrame = 0;
-        let pendingCursorEvent = null;
-        const renderCursor = () => {
-          cursorFrame = 0;
-          if (!pendingCursorEvent) return;
-          const event = pendingCursorEvent;
-          pendingCursorEvent = null;
+        window.addEventListener('pointermove', (event) => {
           cursor.style.setProperty('--cursor-x', `${event.clientX}px`);
           cursor.style.setProperty('--cursor-y', `${event.clientY}px`);
-          if (pendingTilePosition) {
-            const { field, x, y } = pendingTilePosition;
-            const bounds = tileBounds.get(field);
-            if (bounds) {
-              field.style.setProperty('--tile-x', `${x - bounds.left}px`);
-              field.style.setProperty('--tile-y', `${y - bounds.top}px`);
-            }
-          }
+          updateTileHighlight(event);
           if (isTextEntry(event.target)) {
             cursor.classList.remove('is-visible', 'is-active', 'is-view');
             cursor.dataset.label = '';
@@ -364,21 +374,10 @@
           cursor.classList.toggle('is-active', Boolean(target));
           cursor.classList.toggle('is-view', isView);
           cursor.dataset.label = isView ? 'VIEW' : '';
-        };
-        window.addEventListener('pointermove', (event) => {
-          pendingCursorEvent = event;
-          if (!cursorFrame) cursorFrame = window.requestAnimationFrame(renderCursor);
         }, { passive: true });
         document.documentElement.addEventListener('pointerleave', () => {
           cursor.classList.remove('is-visible');
-          activeTileField?.classList.remove('is-pointer-near');
-          activeTileField = null;
-          pendingTilePosition = null;
-          pendingCursorEvent = null;
-          if (cursorFrame) {
-            window.cancelAnimationFrame(cursorFrame);
-            cursorFrame = 0;
-          }
+          clearTileHighlight();
         });
         document.documentElement.addEventListener('pointerenter', () => cursor.classList.add('is-visible'));
       } else cursor?.remove();

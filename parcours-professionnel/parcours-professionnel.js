@@ -169,6 +169,16 @@
         window.addEventListener('scroll', scheduleTileBoundsUpdate, { passive: true });
         let activeTileField = null;
         let pendingTilePosition = null;
+        let tileFrame = 0;
+        const renderTile = () => {
+          tileFrame = 0;
+          if (!pendingTilePosition) return;
+          const { field, x, y } = pendingTilePosition;
+          const bounds = tileBounds.get(field);
+          if (!bounds) return;
+          field.style.setProperty('--grid-x', `${x - bounds.left}px`);
+          field.style.setProperty('--grid-y', `${y - bounds.top}px`);
+        };
         const updateTileHighlight = (event) => {
           const field = event.target instanceof Element ? event.target.closest('[data-tile-field]') : null;
           if (field !== activeTileField) {
@@ -177,6 +187,7 @@
             activeTileField?.classList.add('is-highlighted');
           }
           pendingTilePosition = field ? { field, x: event.clientX, y: event.clientY } : null;
+          if (pendingTilePosition && !tileFrame) tileFrame = window.requestAnimationFrame(renderTile);
         };
         let cursorFrame = 0;
         let pendingCursorEvent = null;
@@ -187,14 +198,6 @@
           pendingCursorEvent = null;
           cursor.style.setProperty('--cursor-x', `${event.clientX}px`);
           cursor.style.setProperty('--cursor-y', `${event.clientY}px`);
-          if (pendingTilePosition) {
-            const { field, x, y } = pendingTilePosition;
-            const bounds = tileBounds.get(field);
-            if (bounds) {
-              field.style.setProperty('--grid-x', `${x - bounds.left}px`);
-              field.style.setProperty('--grid-y', `${y - bounds.top}px`);
-            }
-          }
           cursor.classList.add('is-visible');
           const target = event.target instanceof Element ? event.target.closest('a, button, [data-cursor]') : null;
           const isView = event.target instanceof Element && Boolean(event.target.closest('[data-cursor="VIEW"]'));
@@ -203,6 +206,7 @@
           cursor.dataset.label = isView ? 'VIEW' : '';
         };
         window.addEventListener('pointermove', (event) => {
+          updateTileHighlight(event);
           pendingCursorEvent = event;
           if (!cursorFrame) cursorFrame = window.requestAnimationFrame(renderCursor);
         }, { passive: true });
@@ -211,6 +215,10 @@
           activeTileField?.classList.remove('is-highlighted');
           activeTileField = null;
           pendingTilePosition = null;
+          if (tileFrame) {
+            window.cancelAnimationFrame(tileFrame);
+            tileFrame = 0;
+          }
           pendingCursorEvent = null;
           if (cursorFrame) {
             window.cancelAnimationFrame(cursorFrame);
