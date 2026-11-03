@@ -1,6 +1,5 @@
 @import url("../parcours-professionnel/parcours-professionnel.css");
 
-.page-layout { width: 100%; }
 .content-section { padding-block: 100px; }
 .content-section:nth-of-type(odd) { background: #171814; }
 .table-wrap { overflow-x: auto; border: 1px solid rgb(250 250 246 / 19%); }

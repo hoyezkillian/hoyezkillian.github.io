@@ -148,6 +148,7 @@
       const closeMoreAbout = () => {
         if (!moreAboutToggle || !moreAboutPanel || !moreAboutOverlay) return;
         moreAboutToggle.setAttribute('aria-expanded', 'false');
+        moreAboutToggle.setAttribute('aria-label', 'Ouvrir le panneau Encore plus');
         moreAboutPanel.classList.remove('is-open');
         moreAboutPanel.setAttribute('aria-hidden', 'true');
         moreAboutOverlay.classList.remove('is-open');
@@ -157,6 +158,7 @@
         if (!moreAboutToggle || !moreAboutPanel || !moreAboutOverlay) return;
         closeMenu();
         moreAboutToggle.setAttribute('aria-expanded', 'true');
+        moreAboutToggle.setAttribute('aria-label', 'Fermer le panneau Encore plus');
         moreAboutPanel.classList.add('is-open');
         moreAboutPanel.setAttribute('aria-hidden', 'false');
         moreAboutOverlay.classList.add('is-open');

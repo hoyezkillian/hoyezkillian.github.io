@@ -1,6 +1,5 @@
 @import url("../parcours-professionnel/parcours-professionnel.css");
 
-.page-layout { width: 100%; }
 .content-section { padding-block: 100px; background: #171814; }
 .certification-card { min-height: 300px; padding: clamp(26px, 5vw, 58px); border: 1px solid rgb(250 250 246 / 19%); background: rgb(250 250 246 / 4%); }
 .certification-card h2 { max-width: 700px; margin: 28px 0 22px; font-size: clamp(36px, 5vw, 64px); font-weight: 610; letter-spacing: -.08em; line-height: .98; }

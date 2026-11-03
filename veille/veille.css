@@ -1,6 +1,5 @@
 @import url("../parcours-professionnel/parcours-professionnel.css");
 
-.page-layout { width: 100%; }
 .content-section { padding-block: 100px; background: #171814; }
 .content-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; border: 1px solid var(--line); }
 .content-grid article { min-height: 230px; padding: 28px; border: 1px solid var(--line); background: rgb(250 250 246 / 2%); }
