@@ -141,6 +141,7 @@
         document.body.style.overflow = 'hidden';
         moreAboutClose?.focus();
       };
+      document.querySelector('#hero-open-dossier')?.addEventListener('click', openMoreAbout);
       moreAboutToggle?.addEventListener('click', () => {
         if (moreAboutToggle.getAttribute('aria-expanded') === 'true') closeMoreAbout();
         else openMoreAbout();

@@ -75,7 +75,7 @@
       .availability > span { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 3px rgb(213 255 104 / 12%); }
       .hero-lede { max-width: 555px; margin: 0; color: #b3b4ad; font-size: 15px; line-height: 1.8; }
       .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
-      .button { display: inline-flex; min-height: 46px; align-items: center; justify-content: center; gap: 18px; padding: 0 16px; border: 1px solid #5a5b55; font-size: 12px; font-weight: 640; transition: color .18s ease, background .18s ease, border-color .18s ease, transform .18s ease; }
+      .button { display: inline-flex; min-height: 46px; align-items: center; justify-content: center; gap: 18px; padding: 0 16px; border: 1px solid #5a5b55; font-size: 12px; font-weight: 640; cursor: pointer; transition: color .18s ease, background .18s ease, border-color .18s ease, transform .18s ease; }
       .button:hover { transform: translateY(-2px); border-color: var(--accent); }
       .button-primary { border-color: transparent; background: var(--accent); color: var(--ink); }
       .button-primary:hover { background: #e4ff9c; }
