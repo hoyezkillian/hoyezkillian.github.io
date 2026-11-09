@@ -3,7 +3,7 @@
     "lede": "Je m'appelle Killian Hoyez, je suis étudiant en BTS SIO, option SISR, à MyDigitalSchool à Saint-Herblain.",
     "paragraphs": [
       "J’aime comprendre comment les choses fonctionnent, puis essayer par moi-même. Le développement web et les réseaux informatiques sont deux terrains qui me motivent : je peux y apprendre en faisant, tester une idée et voir tout de suite ce qu’elle devient.",
-      "Je m’intéresse aussi aux scripts, à l’automatisation et à la personnalisation de certains jeux. Je suis encore en train de construire mes compétences ; mes projets personnels et mes expérimentations font partie de ce parcours."
+      "J'installe, configure et documente des environnements systèmes et réseaux en TP (Windows Server, Active Directory, GPO, virtualisation), et je prolonge cet apprentissage par des projets personnels et une veille régulière."
     ],
     "facts": [
       { "label": "Âge", "value": "18 ans" },
@@ -24,35 +24,19 @@
       "index": "02 / SISR",
       "title": "Réseaux & systèmes",
       "description": "Découvrir les services et les configurations qui permettent aux machines de communiquer.",
-      "tags": ["TCP/IP", "VLAN", "DNS · DHCP", "Windows Server", "Linux", "Virtualisation"]
+      "tags": ["TCP/IP", "VLAN", "DNS · DHCP", "Windows Server", "Linux", "Virtualisation", {"label": "Active Directory", "niveau": "pratique-en-tp", "niveauLabel": "pratiqué en TP"}, {"label": "GPO", "niveau": "pratique-en-tp", "niveauLabel": "pratiqué en TP"}, {"label": "VirtualBox", "niveau": "pratique-en-tp", "niveauLabel": "pratiqué en TP"}]
     },
     {
       "index": "03 / OUTILS",
       "title": "Support & bonnes pratiques",
       "description": "Apprendre à diagnostiquer, documenter et garder des environnements simples à suivre.",
-      "tags": ["Support", "Sauvegarde", "Durcissement"]
+      "tags": ["Support", "Sauvegarde", "Durcissement", {"label": "Cybersécurité (bac pro CIEL)", "niveau": "pratique-en-tp", "niveauLabel": "pratiqué en TP"}]
     },
     {
       "index": "04 / LAB",
       "title": "Scripts & expérimentation",
       "description": "Automatiser de petites tâches, personnaliser des expériences et tester de nouvelles idées.",
       "tags": ["Automatisation", "Expérimentation", "Veille personnelle"]
-    }
-  ],
-  "projects": [
-    {
-      "title": "Keywoz Shop",
-      "description": "Un site de vente de comptes Steam que je développe comme projet personnel. Il me permet d’expérimenter la création d’un site web et de faire progresser mes compétences, étape par étape.",
-      "image": "",
-      "technologies": [
-        "HTML",
-        "Projet personnel"
-      ],
-      "demo": "https://keywoz-sys.github.io/keywoz-shop/",
-      "github": "https://github.com/keywoz-sys/keywoz-shop",
-      "links": [],
-      "status": "En développement",
-      "category": "Développement web"
     }
   ],
   "education": [

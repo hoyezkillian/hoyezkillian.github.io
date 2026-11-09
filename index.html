@@ -31,12 +31,11 @@
           <a class="nav-link" href="#accueil">00 / Accueil</a>
           <a class="nav-link" href="#apropos">01 / À propos</a>
           <a class="nav-link" href="#competences">02 / Compétences</a>
-          <a class="nav-link" href="#projets">03 / Projets</a>
-          <a class="nav-link" href="#parcours">04 / Parcours</a>
-          <a class="nav-link" href="#contact">05 / Contact</a>
-          <button class="more-about-toggle" type="button" aria-expanded="false" aria-controls="more-about-panel" aria-label="Ouvrir le panneau Encore plus">
-            <span>Encore plus</span>
-            <span class="sr-only">Ouvrir le panneau Encore plus</span>
+          <a class="nav-link" href="#parcours">03 / Parcours</a>
+          <a class="nav-link" href="#contact">04 / Contact</a>
+          <button class="more-about-toggle" type="button" aria-expanded="false" aria-controls="more-about-panel" aria-label="Ouvrir le panneau Dossier BTS">
+            <span>Dossier BTS</span>
+            <span class="sr-only">Ouvrir le panneau Dossier BTS</span>
             <span class="more-about-icon" aria-hidden="true"><span></span><span></span><span></span></span>
           </button>
         </nav>
@@ -49,11 +48,12 @@
         <p class="eyebrow">À découvrir</p>
         <button class="more-about-close" type="button" aria-label="Fermer le panneau">×</button>
       </div>
-      <h2 id="more-about-title">Encore<br><span>plus.</span></h2>
+      <h2 id="more-about-title">Dossier<br><span>BTS.</span></h2>
       <nav class="more-about-links" aria-label="Pages complémentaires">
         <a href="veille/veille.html"><span>01</span><strong>Veille</strong><span aria-hidden="true">↗</span></a>
-        <a href="e5/e5.html"><span>02</span><strong>Tableau E5</strong><span aria-hidden="true">↗</span></a>
-        <a href="certifications/certifications.html"><span>03</span><strong>Certifications</strong><span aria-hidden="true">↗</span></a>
+        <a href="projets/projets.html"><span>02</span><strong>Projets</strong><span aria-hidden="true">↗</span></a>
+        <a href="e5/e5.html"><span>03</span><strong>Tableau E5</strong><span aria-hidden="true">↗</span></a>
+        <a href="certifications/certifications.html"><span>04</span><strong>Certifications</strong><span aria-hidden="true">↗</span></a>
       </nav>
     </aside>
 
@@ -64,9 +64,10 @@
             <p class="eyebrow">Portfolio personnel <span class="mono">/ 2026</span></p>
             <h1 id="hero-title">Killian<span>Hoyez</span></h1>
             <p class="hero-role">Étudiant en BTS SIO <span>— option SISR</span></p>
+            <p class="availability"><span aria-hidden="true"></span>Recherche alternance · Infrastructure, réseaux, cybersécurité</p>
             <p class="hero-lede">Passionné par l’informatique, j’apprends en construisant : sites web, petits réseaux, scripts et projets personnels.</p>
             <div class="hero-actions">
-              <a class="button button-primary" href="#projets">Voir mes projets <span aria-hidden="true">↘</span></a>
+              <a class="button button-primary" href="projets/projets.html">Voir mes projets <span aria-hidden="true">↘</span></a>
               <a class="button button-quiet" href="#contact">Me contacter <span aria-hidden="true">↗</span></a>
             </div>
             <p class="terminal-note"><strong>killian@portfolio:~$</strong><span>whoami</span><span>student / web / networks</span></p>
@@ -99,7 +100,7 @@
           <div class="about-copy" data-reveal>
             <p class="about-lede">Je m'appelle Killian Hoyez, je suis étudiant en BTS SIO, option SISR, à MyDigitalSchool à Saint-Herblain.</p>
             <p>J’aime comprendre comment les choses fonctionnent, puis essayer par moi-même. Le développement web et les réseaux informatiques sont deux terrains qui me motivent : je peux y apprendre en faisant, tester une idée et voir tout de suite ce qu’elle devient.</p>
-            <p>Je m’intéresse aussi aux scripts, à l’automatisation et à la personnalisation de certains jeux. Je suis encore en train de construire mes compétences ; mes projets personnels et mes expérimentations font partie de ce parcours.</p>
+            <p>J'installe, configure et documente des environnements systèmes et réseaux en TP (Windows Server, Active Directory, GPO, virtualisation), et je prolonge cet apprentissage par des projets personnels et une veille régulière.</p>
             <div class="about-facts">
               <div class="fact"><span>Âge</span><strong>18 ans</strong></div>
               <div class="fact"><span>Formation</span><strong>BTS SIO — SISR</strong></div>
@@ -128,12 +129,12 @@
             <article class="skill-card" data-reveal>
               <span class="card-index">02 / SISR</span><h3>Réseaux & systèmes</h3>
               <p>Découvrir les services et les configurations qui permettent aux machines de communiquer.</p>
-              <div class="tag-list"><span class="tag">TCP/IP</span><span class="tag">VLAN</span><span class="tag">DNS · DHCP</span><span class="tag">Windows Server</span><span class="tag">Linux</span><span class="tag">Virtualisation</span></div>
+              <div class="tag-list"><span class="tag">TCP/IP</span><span class="tag">VLAN</span><span class="tag">DNS · DHCP</span><span class="tag">Windows Server</span><span class="tag">Linux</span><span class="tag">Virtualisation</span><span class="tag" data-niveau="pratique-en-tp">Active Directory <small>pratiqué en TP</small></span><span class="tag" data-niveau="pratique-en-tp">GPO <small>pratiqué en TP</small></span><span class="tag" data-niveau="pratique-en-tp">VirtualBox <small>pratiqué en TP</small></span></div>
             </article>
             <article class="skill-card" data-reveal>
               <span class="card-index">03 / OUTILS</span><h3>Support & bonnes pratiques</h3>
               <p>Apprendre à diagnostiquer, documenter et garder des environnements simples à suivre.</p>
-              <div class="tag-list"><span class="tag">Support</span><span class="tag">Sauvegarde</span><span class="tag">Durcissement</span></div>
+              <div class="tag-list"><span class="tag">Support</span><span class="tag">Sauvegarde</span><span class="tag">Durcissement</span><span class="tag" data-niveau="pratique-en-tp">Cybersécurité (bac pro CIEL) <small>pratiqué en TP</small></span></div>
             </article>
             <article class="skill-card" data-reveal>
               <span class="card-index">04 / LAB</span><h3>Scripts & expérimentation</h3>
@@ -141,43 +142,14 @@
               <div class="tag-list"><span class="tag">Automatisation</span><span class="tag">Expérimentation</span><span class="tag">Veille personnelle</span></div>
             </article>
           </div>
-          <p class="skills-caption">Je continue d’apprendre : ces domaines décrivent mon parcours en cours, pas un niveau d’expertise.</p>
-        </div>
-      </section>
-
-      <section class="section projects-section tile-section tile-projects" id="projets" aria-labelledby="projects-title" data-tile-field>
-        <div class="wrap">
-          <div class="section-heading" data-reveal="slide">
-            <div><span class="section-number">03 / RÉALISATIONS</span><p class="eyebrow">Projets personnels</p><h2 id="projects-title">Apprendre en<br>construisant<span>.</span></h2></div>
-            <p class="section-note">Des projets concrets pour transformer une idée en terrain d’apprentissage. Cette galerie pourra accueillir les prochains.</p>
-          </div>
-          <div class="project-list" id="project-grid">
-            <!-- Contenu de secours ; la liste projects du script reste la source des cartes interactives. -->
-            <article class="project-card" data-reveal>
-              <a class="project-visual" href="https://keywoz-sys.github.io/keywoz-shop/" target="_blank" rel="noopener noreferrer" aria-label="Ouvrir le site Keywoz Shop">
-                <span class="visual-label" aria-hidden="true">PROJET PERSONNEL / 001</span>
-                <span class="project-monogram" aria-hidden="true">K</span>
-                <span class="visual-corner" aria-hidden="true">KEYWOZ SHOP / EN COURS</span>
-              </a>
-              <div class="project-copy">
-                <div class="project-meta"><span>D&eacute;veloppement web</span><span class="project-status">En d&eacute;veloppement</span></div>
-                <h3>Keywoz Shop</h3>
-                <p>Un site de vente de comptes Steam que je d&eacute;veloppe comme projet personnel. Il me permet d&rsquo;exp&eacute;rimenter la cr&eacute;ation d&rsquo;un site web et de faire progresser mes comp&eacute;tences, &eacute;tape par &eacute;tape.</p>
-                <div class="project-tags"><span class="tag">HTML</span><span class="tag">Projet personnel</span></div>
-                <div class="project-links">
-                  <a class="button button-quiet" href="https://keywoz-sys.github.io/keywoz-shop/" target="_blank" rel="noopener noreferrer">Voir le site <span aria-hidden="true">&#8599;</span></a>
-                  <a class="button button-primary" href="https://github.com/keywoz-sys/keywoz-shop" target="_blank" rel="noopener noreferrer">Code source <span aria-hidden="true">&#8599;</span></a>
-                </div>
-              </div>
-            </article>
-          </div>
+          <p class="skills-caption">Chaque repère indique où j'ai pratiqué : en TP, en stage ou en découverte.</p>
         </div>
       </section>
 
       <section class="section section-dark tile-section tile-journey" id="parcours" aria-labelledby="journey-title" data-tile-field>
           <div class="wrap journey-grid">
           <div data-reveal>
-            <span class="section-number">04 / ÉTAPES</span><p class="eyebrow">Parcours</p><h2 id="journey-title">En cours<br>d’écriture<span>.</span></h2>
+            <span class="section-number">03 / ÉTAPES</span><p class="eyebrow">Parcours</p><h2 id="journey-title">En cours<br>d’écriture<span>.</span></h2>
             <p class="journey-intro">Du bac professionnel CIEL au BTS SIO SISR : un fil conducteur autour de l’informatique, des réseaux et de leur mise en pratique.</p>
           </div>
           <div class="timeline-stack">
@@ -206,7 +178,7 @@
 
       <section class="contact-section tile-section tile-contact" id="contact" aria-labelledby="contact-title" data-tile-field>
         <div class="wrap contact-grid">
-          <div data-reveal><span class="section-number">05 / CONTACT</span><p class="eyebrow">Restons en contact</p><h2 id="contact-title">Parlons<br><span>informatique.</span></h2></div>
+          <div data-reveal><span class="section-number">04 / CONTACT</span><p class="eyebrow">Restons en contact</p><h2 id="contact-title">Parlons<br><span>informatique.</span></h2></div>
           <div class="contact-aside" data-reveal>
             <p>Un projet, une question ou simplement envie d’échanger ? Vous pouvez m’écrire ou retrouver mes projets en ligne.</p>
             <div class="contact-links">
@@ -257,7 +229,7 @@
           <a class="footer-brand" href="#accueil"><span class="brand-mark" aria-hidden="true">KH</span><span>Killian <strong>Hoyez</strong></span></a>
           <p class="footer-credit">Portfolio personnel — étudiant en BTS SIO, option SISR.<br>Designed & built by Killian Hoyez.</p>
         </div>
-        <div><p class="footer-label">Navigation</p><nav class="footer-nav" aria-label="Navigation de pied de page"><a href="#apropos">À propos</a><a href="#competences">Compétences</a><a href="#projets">Projets</a><a href="#parcours">Parcours</a><a href="#contact">Contact</a></nav></div>
+        <div><p class="footer-label">Navigation</p><nav class="footer-nav" aria-label="Navigation de pied de page"><a href="#accueil">00 / Accueil</a><a href="#apropos">01 / À propos</a><a href="#competences">02 / Compétences</a><a href="#parcours">03 / Parcours</a><a href="#contact">04 / Contact</a></nav></div>
         <div><p class="footer-label">Retrouver mon travail</p><div class="footer-socials">
           <a href="https://github.com/hoyezkillian" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .9a11.1 11.1 0 0 0-3.51 21.63c.55.1.76-.24.76-.53v-2.04c-3.1.67-3.76-1.32-3.76-1.32-.5-1.28-1.23-1.62-1.23-1.62-1.01-.69.08-.68.08-.68 1.11.08 1.7 1.14 1.7 1.14.99 1.7 2.59 1.2 3.22.92.1-.71.39-1.2.7-1.48-2.48-.28-5.09-1.24-5.09-5.53 0-1.22.44-2.22 1.15-3-.12-.28-.5-1.42.11-2.96 0 0 .94-.3 3.06 1.15a10.66 10.66 0 0 1 5.57 0c2.12-1.45 3.06-1.15 3.06-1.15.61 1.54.23 2.68.11 2.96.72.78 1.15 1.78 1.15 3 0 4.3-2.61 5.25-5.1 5.53.4.35.75 1.03.75 2.08V22c0 .29.2.63.76.52A11.1 11.1 0 0 0 12 .9Z"/></svg>GitHub</a>
           <a href="https://www.linkedin.com/in/killian-hoyez" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.16 3.18a2.08 2.08 0 1 1-.02 4.16 2.08 2.08 0 0 1 .02-4.16ZM3.36 9h3.6v11.62h-3.6V9Zm5.84 0h3.45v1.59h.05c.48-.9 1.66-1.84 3.42-1.84 3.66 0 4.34 2.4 4.34 5.53v6.34h-3.6v-5.62c0-1.34-.02-3.06-1.87-3.06-1.87 0-2.16 1.46-2.16 2.96v5.72H9.2V9Z"/></svg>LinkedIn</a>

@@ -12,7 +12,7 @@
       const loadPortfolioData = async () => {
         const response = await fetch('data/index.json');
         if (!response.ok) throw new Error(`Impossible de charger les données (${response.status}).`);
-        const { about, skills, projects, education, journey, contact, footer } = await response.json();
+        const { about, skills, education, journey, contact, footer } = await response.json();
 
         const aboutCopy = document.querySelector('.about-copy');
         if (aboutCopy) {
@@ -41,38 +41,14 @@
               <span class="card-index">${escapeHTML(skill.index)}</span>
               <h3>${escapeHTML(skill.title)}</h3>
               <p>${escapeHTML(skill.description)}</p>
-              <div class="tag-list">${skill.tags.map((tag) => `<span class="tag">${escapeHTML(tag)}</span>`).join('')}</div>
+              <div class="tag-list">${skill.tags.map((tag) => {
+                const label = typeof tag === 'string' ? tag : tag.label;
+                const level = typeof tag === 'string' ? '' : ` data-niveau="${escapeHTML(tag.niveau)}"`;
+                const levelLabel = typeof tag === 'string' || !tag.niveauLabel ? '' : `<small>${escapeHTML(tag.niveauLabel)}</small>`;
+                return `<span class="tag"${level}>${escapeHTML(label)}${levelLabel}</span>`;
+              }).join('')}</div>
             </article>
           `).join('');
-        }
-
-        const projectGrid = document.querySelector('#project-grid');
-        if (projectGrid && Array.isArray(projects) && projects.length) {
-          projectGrid.innerHTML = projects.map((project, index) => {
-            const visualTag = project.demo ? 'a' : 'div';
-            const visualHref = project.demo ? ` href="${escapeHTML(project.demo)}" target="_blank" rel="noopener noreferrer" aria-label="Ouvrir le site ${escapeHTML(project.title)}"` : '';
-            return `
-          <article class="project-card">
-            <${visualTag} class="project-visual"${visualHref} data-reveal="scale">
-              <span class="visual-label" aria-hidden="true">PROJET PERSONNEL / ${String(index + 1).padStart(3, '0')}</span>
-              <span class="project-monogram" aria-hidden="true">${escapeHTML(project.title.charAt(0).toUpperCase())}</span>
-              ${project.image ? `<img class="project-image" src="${escapeHTML(project.image)}" alt="Capture d’écran de ${escapeHTML(project.title)}" loading="lazy" decoding="async" />` : ''}
-              <span class="visual-corner" aria-hidden="true">${escapeHTML(project.title.toUpperCase())} / ${escapeHTML(project.status.toUpperCase())}</span>
-            </${visualTag}>
-            <div class="project-copy" data-reveal="slide">
-              <div class="project-meta"><span>${escapeHTML(project.category)}</span><span class="project-status">${escapeHTML(project.status)}</span></div>
-              <h3>${escapeHTML(project.title)}</h3>
-              <p>${escapeHTML(project.description)}</p>
-              <div class="project-tags">${project.technologies.map((technology) => `<span class="tag">${escapeHTML(technology)}</span>`).join('')}</div>
-              <div class="project-links">
-                ${project.demo ? `<a class="button button-quiet" href="${escapeHTML(project.demo)}" target="_blank" rel="noopener noreferrer">Voir le site <span aria-hidden="true">&#8599;</span></a>` : ''}
-                ${project.github ? `<a class="button button-primary" href="${escapeHTML(project.github)}" target="_blank" rel="noopener noreferrer">Code source <span aria-hidden="true">&#8599;</span></a>` : ''}
-                ${(project.links || []).map((link) => `<a class="button" href="${escapeHTML(link.url)}" target="_blank" rel="noopener noreferrer">${escapeHTML(link.label)} <span aria-hidden="true">&#8599;</span></a>`).join('')}
-              </div>
-            </div>
-          </article>
-        `;
-          }).join('');
         }
 
         const educationList = document.querySelector('#education-list');
@@ -148,7 +124,7 @@
       const closeMoreAbout = () => {
         if (!moreAboutToggle || !moreAboutPanel || !moreAboutOverlay) return;
         moreAboutToggle.setAttribute('aria-expanded', 'false');
-        moreAboutToggle.setAttribute('aria-label', 'Ouvrir le panneau Encore plus');
+        moreAboutToggle.setAttribute('aria-label', 'Ouvrir le panneau Dossier BTS');
         moreAboutPanel.classList.remove('is-open');
         moreAboutPanel.setAttribute('aria-hidden', 'true');
         moreAboutOverlay.classList.remove('is-open');
@@ -158,7 +134,7 @@
         if (!moreAboutToggle || !moreAboutPanel || !moreAboutOverlay) return;
         closeMenu();
         moreAboutToggle.setAttribute('aria-expanded', 'true');
-        moreAboutToggle.setAttribute('aria-label', 'Fermer le panneau Encore plus');
+        moreAboutToggle.setAttribute('aria-label', 'Fermer le panneau Dossier BTS');
         moreAboutPanel.classList.add('is-open');
         moreAboutPanel.setAttribute('aria-hidden', 'false');
         moreAboutOverlay.classList.add('is-open');
@@ -250,15 +226,6 @@
         }, { threshold: 0.12 });
         document.querySelectorAll('[data-reveal]').forEach((element) => revealObserver.observe(element));
       }
-
-      document.querySelectorAll('.project-image').forEach((image) => {
-        const visual = image.closest('.project-visual');
-        image.addEventListener('load', () => {
-          if (image.naturalWidth > 0) visual?.classList.add('has-image');
-        });
-        image.addEventListener('error', () => image.remove());
-        if (image.complete && image.naturalWidth > 0) visual?.classList.add('has-image');
-      });
 
       const contactForm = document.querySelector('#contact-form');
       const formStatus = document.querySelector('#form-status');
