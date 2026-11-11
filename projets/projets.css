@@ -1,0 +1,48 @@
+.project-step-content { padding: 0 20px 24px; }
+.project-step-content > h3 { margin: 32px 0 0; color: var(--accent); font-size: 13px; font-weight: 600; letter-spacing: .03em; text-transform: uppercase; }
+.project-objective { margin: 0; }
+.objective-main { display: inline; padding: 2px 5px; background: rgb(213 255 104 / 18%); color: inherit; }
+.project-step-content code { padding: 2px 5px; border: 1px solid rgb(255 255 255 / 12%); border-radius: 4px; background: rgb(0 0 0 / 24%); color: inherit; font: .92em var(--mono); }
+.project-detail-light { position: relative; --grid-line: rgb(16 17 15 / 10%); --grid-glint: rgb(16 17 15 / 16%); --grid-opacity: .22; --tile-highlight: rgb(16 17 15 / 16%); border-block: 1px solid #d5d5ce; background: linear-gradient(180deg, #f3f3ee 0%, #ecece7 100%); color: #242520; }
+.project-detail-light .section-number, .project-detail-light .section-note, .project-detail-light .project-substeps p, .project-detail-light .project-overview p { color: #55574f; }
+.project-detail-light .eyebrow { color: #62645c; }
+.project-detail-light .section-heading h2, .project-detail-light .project-substeps h4, .project-detail-light .project-overview h3 { color: #242520; }
+.project-detail-light .project-substeps figcaption { color: #666861; }
+.project-detail-light .project-substeps figure img { border-color: #c2c3ba; background: rgb(16 17 15 / 8%); }
+.project-detail-light .project-overview { border-color: #c2c3ba !important; background: rgb(255 255 255 / 36%) !important; }
+.project-detail-light code { border-color: rgb(16 17 15 / 14%); background: rgb(16 17 15 / 9%); }
+.project-step-content ul { margin: 0 0 24px; padding-left: 20px; color: #b3b4ad; font-size: 13px; line-height: 1.8; }
+.project-substeps { display: grid; gap: 36px; margin: 24px 0 0; padding-left: 28px; color: #b3b4ad; }
+.project-substeps > li { padding-left: 10px; }
+.project-substeps h4 { margin: 0 0 10px; color: #e6e7df; font-size: 16px; font-weight: 550; }
+.project-substeps p { margin: 0; font-size: 13px; line-height: 1.8; }
+.project-substeps figure { margin: 18px 0 0; }
+.project-substeps figure img { display: block; width: auto; max-width: 100%; max-height: 280px; height: auto; padding: 5px; border: 1px solid var(--line); background: rgb(0 0 0 / 22%); object-fit: contain; object-position: top center; cursor: zoom-in; transition: transform .2s ease, border-color .2s ease; }
+.project-substeps figure img:hover { border-color: var(--accent); transform: scale(1.015); }
+.project-substeps figure img:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.project-substeps figcaption { margin-top: 7px; color: #85877f; font: 10px var(--mono); line-height: 1.5; text-align: center; }
+.project-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.project-gallery img { display: block; width: 100%; aspect-ratio: 16 / 10; border: 1px solid var(--line); object-fit: cover; cursor: zoom-in; }
+.project-gallery img:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.project-pdf { margin-top: 24px; }
+.lightbox { position: fixed; z-index: 20; inset: 0; display: grid; padding: 24px; place-items: center; background: rgb(0 0 0 / 88%); cursor: zoom-out; opacity: 0; transition: opacity .2s ease; }
+.lightbox.is-visible { opacity: 1; }
+.lightbox img { max-width: 90vw; max-height: 90vh; object-fit: contain; }
+.lightbox-close { position: absolute; top: 16px; right: 24px; border: 0; background: transparent; color: #fff; cursor: pointer; font-size: 32px; }
+@media (min-width: 900px) {
+  .project-substeps > li { display: grid; grid-template-columns: minmax(0, 55fr) minmax(0, 45fr); column-gap: 32px; align-items: start; }
+  .project-substeps > li figure { grid-column: 2; grid-row: 1 / span 2; margin: 0; }
+  .project-substeps > li h4, .project-substeps > li > p { grid-column: 1; }
+  .project-substeps > li > p { grid-row: 2; }
+}
+@media (max-width: 899px) {
+  .project-substeps { gap: 32px; }
+  .project-substeps > li figure { margin-top: 16px; }
+}
+@media (max-width: 620px) {
+  .project-gallery { grid-template-columns: repeat(2, 1fr); }
+  .project-steps summary { padding: 17px; font-size: 14px; }
+  .project-step-content { padding-inline: 17px; }
+  .project-substeps { padding-left: 22px; }
+  .project-substeps figure img { max-height: 240px; }
+}
