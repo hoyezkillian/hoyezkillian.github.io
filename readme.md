@@ -97,11 +97,11 @@ Un script de déploiement est prévu (Python ou PowerShell) : `git pull`, détec
 - [x] Page d'accueil responsive avec les sections Accueil, À propos, Compétences, Parcours et Contact
 - [x] Mise en ligne sur `khoyez.me` (GitHub Pages) et sur Infomaniak
 - [x] Page dédiée au dossier BTS avec accès à la veille, aux projets, au tableau E5 et aux certifications
-- [ ] Sitemap et amélioration du référencement organique
-- [ ] Séparation complète HTML / JavaScript / CSS / PHP
+- [x] Sitemap et amélioration du référencement organique
+- [x] Séparation complète HTML / JavaScript / CSS / PHP
 - [ ] Stockage des données du site dans des fichiers JSON
-- [ ] Espace d'administration (backoffice) sécurisé, dès qu'un serveur sera disponible
-- [ ] Script de déploiement automatique par FTP
+- [x] Espace d'administration (backoffice) sécurisé, dès qu'un serveur sera disponible
+- [x] Script de déploiement automatique par FTP ( https://killian.hoyez.mds-nantes.fr/ )
 
 ---
 
