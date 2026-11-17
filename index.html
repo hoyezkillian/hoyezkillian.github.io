@@ -32,30 +32,11 @@
           <a class="nav-link" href="#apropos">01 / À propos</a>
           <a class="nav-link" href="#competences">02 / Compétences</a>
           <a class="nav-link" href="#parcours">03 / Parcours</a>
-          <a class="nav-link" href="#contact">04 / Contact</a>
-          <button class="more-about-toggle" type="button" aria-expanded="false" aria-controls="more-about-panel" aria-label="Ouvrir le panneau Dossier BTS">
-            <span>Dossier BTS</span>
-            <span class="sr-only">Ouvrir le panneau Dossier BTS</span>
-            <span class="more-about-icon" aria-hidden="true"><span></span><span></span><span></span></span>
-          </button>
+          <a class="nav-link dossier-link" href="#dossier-bts">04 / Dossier BTS</a>
+          <a class="nav-link" href="#contact">05 / Contact</a>
         </nav>
       </div>
     </header>
-
-    <div class="more-about-overlay" data-more-about-close></div>
-    <aside class="more-about-panel" id="more-about-panel" aria-labelledby="more-about-title" aria-hidden="true">
-      <div class="more-about-panel-header">
-        <p class="eyebrow">À découvrir</p>
-        <button class="more-about-close" type="button" aria-label="Fermer le panneau">×</button>
-      </div>
-      <h2 id="more-about-title">Dossier<br><span>BTS.</span></h2>
-      <nav class="more-about-links" aria-label="Pages complémentaires">
-        <a href="veille/veille.html"><span>01</span><strong>Veille</strong><span aria-hidden="true">↗</span></a>
-        <a href="projets/projets.html"><span>02</span><strong>Projets</strong><span aria-hidden="true">↗</span></a>
-        <a href="e5/e5.html"><span>03</span><strong>Tableau E5</strong><span aria-hidden="true">↗</span></a>
-        <a href="certifications/certifications.html"><span>04</span><strong>Certifications</strong><span aria-hidden="true">↗</span></a>
-      </nav>
-    </aside>
 
     <main id="contenu">
       <section class="hero tile-section tile-hero" id="accueil" aria-labelledby="hero-title" data-tile-field>
@@ -67,7 +48,7 @@
             <p class="availability"><span aria-hidden="true"></span>Recherche alternance · Infrastructure, réseaux, cybersécurité</p>
             <p class="hero-lede">Passionné par l’informatique, j’apprends en construisant : sites web, petits réseaux, scripts et projets personnels.</p>
             <div class="hero-actions">
-              <button class="button button-primary" id="hero-open-dossier" type="button" aria-controls="more-about-panel">Dossier BTS <span aria-hidden="true">↘</span></button>
+              <a class="button button-primary dossier-link" href="#dossier-bts">Dossier BTS <span aria-hidden="true">↘</span></a>
               <a class="button button-quiet" href="#contact">Me contacter <span aria-hidden="true">↗</span></a>
             </div>
             <p class="terminal-note"><strong>killian@portfolio:~$</strong><span>whoami</span><span>student / web / networks</span></p>
@@ -176,9 +157,18 @@
         </div>
       </section>
 
+      <section class="section section-light tile-section tile-about dossier-section" id="dossier-bts" aria-labelledby="dossier-title" data-tile-field>
+        <div class="wrap">
+          <div class="section-heading" data-reveal="slide">
+            <div><span class="section-number">04 / DOSSIER BTS</span><p class="eyebrow">Travaux et ressources</p><h2 id="dossier-title">Mon espace<br>dossier BTS<span>.</span></h2></div>
+            <div class="dossier-intro"><p class="section-note">Retrouvez mes travaux de veille, mes projets, mon tableau E5 et les certifications qui accompagnent ma formation.</p><a class="button button-primary" href="dossier-bts/dossier-bts.html">Accéder à mon dossier BTS <span aria-hidden="true">↗</span></a></div>
+          </div>
+        </div>
+      </section>
+
       <section class="contact-section tile-section tile-contact" id="contact" aria-labelledby="contact-title" data-tile-field>
         <div class="wrap contact-grid">
-          <div data-reveal><span class="section-number">04 / CONTACT</span><p class="eyebrow">Restons en contact</p><h2 id="contact-title">Parlons<br><span>informatique.</span></h2></div>
+          <div data-reveal><span class="section-number">05 / CONTACT</span><p class="eyebrow">Restons en contact</p><h2 id="contact-title">Parlons<br><span>informatique.</span></h2></div>
           <div class="contact-aside" data-reveal>
             <p>Un projet, une question ou simplement envie d’échanger ? Vous pouvez m’écrire ou retrouver mes projets en ligne.</p>
             <div class="contact-links">
@@ -229,7 +219,7 @@
           <a class="footer-brand" href="#accueil"><span class="brand-mark" aria-hidden="true">KH</span><span>Killian <strong>Hoyez</strong></span></a>
           <p class="footer-credit">Portfolio personnel — étudiant en BTS SIO, option SISR.<br>Designed & built by Killian Hoyez.</p>
         </div>
-        <div><p class="footer-label">Navigation</p><nav class="footer-nav" aria-label="Navigation de pied de page"><a href="#accueil">00 / Accueil</a><a href="#apropos">01 / À propos</a><a href="#competences">02 / Compétences</a><a href="#parcours">03 / Parcours</a><a href="#contact">04 / Contact</a></nav></div>
+        <div><p class="footer-label">Navigation</p><nav class="footer-nav" aria-label="Navigation de pied de page"><a href="#accueil">00 / Accueil</a><a href="#apropos">01 / À propos</a><a href="#competences">02 / Compétences</a><a href="#parcours">03 / Parcours</a><a class="dossier-link" href="#dossier-bts">04 / Dossier BTS</a><a href="#contact">05 / Contact</a></nav></div>
         <div><p class="footer-label">Retrouver mon travail</p><div class="footer-socials">
           <a href="https://github.com/hoyezkillian" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .9a11.1 11.1 0 0 0-3.51 21.63c.55.1.76-.24.76-.53v-2.04c-3.1.67-3.76-1.32-3.76-1.32-.5-1.28-1.23-1.62-1.23-1.62-1.01-.69.08-.68.08-.68 1.11.08 1.7 1.14 1.7 1.14.99 1.7 2.59 1.2 3.22.92.1-.71.39-1.2.7-1.48-2.48-.28-5.09-1.24-5.09-5.53 0-1.22.44-2.22 1.15-3-.12-.28-.5-1.42.11-2.96 0 0 .94-.3 3.06 1.15a10.66 10.66 0 0 1 5.57 0c2.12-1.45 3.06-1.15 3.06-1.15.61 1.54.23 2.68.11 2.96.72.78 1.15 1.78 1.15 3 0 4.3-2.61 5.25-5.1 5.53.4.35.75 1.03.75 2.08V22c0 .29.2.63.76.52A11.1 11.1 0 0 0 12 .9Z"/></svg>GitHub</a>
           <a href="https://www.linkedin.com/in/killian-hoyez" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.16 3.18a2.08 2.08 0 1 1-.02 4.16 2.08 2.08 0 0 1 .02-4.16ZM3.36 9h3.6v11.62h-3.6V9Zm5.84 0h3.45v1.59h.05c.48-.9 1.66-1.84 3.42-1.84 3.66 0 4.34 2.4 4.34 5.53v6.34h-3.6v-5.62c0-1.34-.02-3.06-1.87-3.06-1.87 0-2.16 1.46-2.16 2.96v5.72H9.2V9Z"/></svg>LinkedIn</a>

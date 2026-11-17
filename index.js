@@ -117,41 +117,7 @@
         });
       }
 
-      const moreAboutToggle = document.querySelector('.more-about-toggle');
-      const moreAboutPanel = document.querySelector('#more-about-panel');
-      const moreAboutOverlay = document.querySelector('.more-about-overlay');
-      const moreAboutClose = document.querySelector('.more-about-close');
-      const closeMoreAbout = () => {
-        if (!moreAboutToggle || !moreAboutPanel || !moreAboutOverlay) return;
-        moreAboutToggle.setAttribute('aria-expanded', 'false');
-        moreAboutToggle.setAttribute('aria-label', 'Ouvrir le panneau Dossier BTS');
-        moreAboutPanel.classList.remove('is-open');
-        moreAboutPanel.setAttribute('aria-hidden', 'true');
-        moreAboutOverlay.classList.remove('is-open');
-        document.body.style.overflow = '';
-      };
-      const openMoreAbout = () => {
-        if (!moreAboutToggle || !moreAboutPanel || !moreAboutOverlay) return;
-        closeMenu();
-        moreAboutToggle.setAttribute('aria-expanded', 'true');
-        moreAboutToggle.setAttribute('aria-label', 'Fermer le panneau Dossier BTS');
-        moreAboutPanel.classList.add('is-open');
-        moreAboutPanel.setAttribute('aria-hidden', 'false');
-        moreAboutOverlay.classList.add('is-open');
-        document.body.style.overflow = 'hidden';
-        moreAboutClose?.focus();
-      };
-      document.querySelector('#hero-open-dossier')?.addEventListener('click', openMoreAbout);
-      moreAboutToggle?.addEventListener('click', () => {
-        if (moreAboutToggle.getAttribute('aria-expanded') === 'true') closeMoreAbout();
-        else openMoreAbout();
-      });
-      moreAboutClose?.addEventListener('click', closeMoreAbout);
-      moreAboutOverlay?.addEventListener('click', closeMoreAbout);
-      moreAboutPanel?.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMoreAbout));
-      document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape') closeMoreAbout();
-      });
+      const reduceMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
 
       const cvOpenButton = document.querySelector('#open-cv');
       const cvModal = document.querySelector('#cv-modal');
@@ -191,7 +157,6 @@
       if (year) year.textContent = String(new Date().getFullYear());
 
       const intro = document.querySelector('#intro-screen');
-      const reduceMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
       if (intro && !reduceMotion) {
         intro.classList.add('is-playing');
         window.setTimeout(() => intro.remove(), 850);
